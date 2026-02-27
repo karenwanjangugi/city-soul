@@ -64,11 +64,11 @@ const PillNav = ({
 
       {/* Desktop Unified Navigation Bar */}
       <nav 
-        className={`fixed top-8 left-1/2 -translate-x-1/2 z-[100] hidden lg:flex items-center p-2 rounded-full border border-white/20 backdrop-blur-lg shadow-2xl ${className}`}
+        className={`fixed top-8 left-1/2 -translate-x-1/2 z-[100] hidden lg:flex items-center p-2 rounded-full border border-white/20 backdrop-blur-lg shadow-2xl w-max max-w-[95vw] ${className}`}
         style={{ backgroundColor: `rgba(0, 0, 0, 0.5)` }}
       >
         {/* Desktop Logo Inside Pill */}
-        <div className="flex items-center px-4 border-r border-white/10 min-w-fit">
+        <div className="flex items-center px-4 border-r border-white/10 shrink-0">
           <img 
             src="/logo.png" 
             alt="City Soul" 
@@ -78,7 +78,7 @@ const PillNav = ({
         </div>
 
         {/* Desktop Menu Items */}
-        <div className="relative flex items-center p-1 ml-1">
+        <div className="relative flex items-center p-1 ml-1 shrink-0">
           {/* Animated Pill Highlight */}
           <div 
             className="absolute h-[calc(100%-4px)] rounded-full pointer-events-none z-0"
@@ -103,7 +103,7 @@ const PillNav = ({
                   e.preventDefault();
                   handleNavClick(item.href);
                 }}
-                className="relative px-3 py-1.5 text-[10px] xl:text-[11px] uppercase tracking-[0.1em] xl:tracking-[0.15em] font-bold transition-colors duration-300 z-10 whitespace-nowrap"
+                className="relative px-2 xl:px-3 py-1.5 text-[10px] xl:text-[11px] uppercase tracking-[0.1em] xl:tracking-[0.15em] font-bold transition-colors duration-300 z-10 whitespace-nowrap shrink-0"
                 style={{ 
                   color: (isHovered || (isActive && hoveredIndex === null)) 
                     ? hoveredPillTextColor 
