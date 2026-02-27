@@ -3,10 +3,10 @@ import React from 'react';
 export default function Contact() {
   // --- UPDATE YOUR SOCIAL LINKS HERE ---
   const socialLinks = {
-    INSTAGRAM: "https://instagram.com/citysoulculture",
-    FACEBOOK: "https://facebook.com/citysoulculture",
-    LINKEDIN: "https://linkedin.com/company/citysoulculture",
-    TWITTER: "https://twitter.com/citysoulculture"
+    INSTAGRAM: "https://www.instagram.com/hunja_wangui/",
+    // FACEBOOK: "https://facebook.com/citysoulculture",
+    LINKEDIN: "https://www.linkedin.com/in/kelvinhunja",
+    // TWITTER: "https://twitter.com/citysoulculture"
   };
 
   return (
