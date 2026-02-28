@@ -45,7 +45,7 @@ export default function Vision() {
               </p>
               <p className="text-lg md:text-xl text-gray-700">
                 The objective is the development of a global platform that champions African 
-                talent—not just through curation and live experiences, but through artist 
+                talent,not just through curation and live experiences, but through artist 
                 development, strategic collaboration, and culturally grounded storytelling 
                 that resonates across borders.
               </p>
