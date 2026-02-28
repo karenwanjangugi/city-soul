@@ -63,6 +63,7 @@ export default function Hero() {
         muted
         loop
         playsInline
+        // poster="/photo.png"
         className="absolute inset-0 w-full h-full object-cover"
       >
         <source src="/video.mp4" type="video/mp4" />
@@ -74,22 +75,6 @@ export default function Hero() {
         className="absolute inset-0 z-10 block"
       />
 
-      {/* RIGHT SIDE TEXT CONTENT */}
-      {/* <div className="absolute z-20 text-white font-['Montserrat'] px-6
-                      bottom-20 left-6 right-6 md:right-[5%] md:left-auto md:top-[65%] md:bottom-auto md:w-[35%] md:-translate-y-1/2">
-        <p className="text-base md:text-lg lg:text-xl font-light leading-relaxed mb-8 md:mb-12">
-          In the heartbeat of the city, we find the rhythm of the soul. We don't 
-          just create events; we craft experiences that resonate in the quiet 
-          moments between the lights.
-        </p>
-        <button
-          className="w-full md:w-[350px] py-4 bg-white text-black rounded-full text-lg md:text-xl font-bold 
-                     transition-all duration-300 hover:bg-white/80 active:scale-95"
-          onClick={() => document.getElementById('vision')?.scrollIntoView({ behavior: 'smooth' })}
-        >
-          Learn More
-        </button>
-      </div> */}
     </section>
   );
 }

@@ -16,8 +16,8 @@ export default function About() {
           
           {/* Left Column: Content */}
           <div className="flex-1 text-left">
-            <h2 className="text-6xl md:text-8xl font-black mb-8 md:mb-12 tracking-tighter leading-none">ABOUT</h2>
-            <div className="space-y-6 md:space-y-8 text-lg md:text-xl leading-relaxed text-gray-900 font-medium max-w-xl">
+            <h2 className="text-5xl md:text-7xl font-black mb-8 md:mb-12 tracking-tighter leading-none">ABOUT</h2>
+            <div className="space-y-6 md:space-y-8 text-base md:text-lg leading-relaxed text-gray-900 font-medium max-w-xl">
               <p>
                 As a multidisciplinary creative producer, event curator, and artist manager with over
                 four years of experience, I develop impactful experiences that merge sound, culture,

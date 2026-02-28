@@ -42,26 +42,26 @@ export default function Contact() {
           
           {/* Left Column: Contact Heading & Info */}
           <div className="flex-1 text-left">
-            <h2 className="text-6xl md:text-8xl font-black mb-8 md:mb-12 tracking-tighter leading-none text-white">LET'S<br/>TALK</h2>
-            <div className="space-y-8 md:space-y-12 text-lg md:text-xl leading-relaxed text-gray-300 font-medium max-w-xl">
-              <p className="text-xl md:text-2xl">
+            <h2 className="text-5xl md:text-7xl font-black mb-8 md:mb-12 tracking-tighter leading-none text-white">LET'S<br/>TALK</h2>
+            <div className="space-y-8 md:space-y-12 text-base md:text-lg leading-relaxed text-gray-300 font-medium max-w-xl">
+              <p className="text-lg md:text-xl">
                 Ready to bring your vision to life? Get in touch and let's create something extraordinary together.
               </p>
               
               <div className="mt-12 md:mt-20 space-y-8 md:space-y-12">
                 <div className="flex flex-col group">
                   <span className="text-xs uppercase tracking-[0.3em] text-gray-500 font-bold mb-2 md:mb-4">Email Us</span>
-                  <a href="mailto:hello@citysoul.com" className="text-2xl md:text-4xl font-black hover:text-gray-400 transition-colors tracking-tight break-words">hunjawangui@gmail.com</a>
+                  <a href="mailto:hello@citysoul.com" className="text-xl md:text-3xl font-black hover:text-gray-400 transition-colors tracking-tight break-words">hunjawangui@gmail.com</a>
                 </div>
                 
                 <div className="flex flex-col group pt-4">
                   <span className="text-xs uppercase tracking-[0.3em] text-gray-500 font-bold mb-2 md:mb-4">Call Us</span>
-                  <a href="tel:+254714387438" className="text-2xl md:text-4xl font-black hover:text-gray-400 transition-colors tracking-tight">+254 714 387 438</a>
+                  <a href="tel:+254714387438" className="text-xl md:text-3xl font-black hover:text-gray-400 transition-colors tracking-tight">+254 714 387 438</a>
                 </div>
 
                 <div className="flex flex-col pt-4">
                   <span className="text-xs uppercase tracking-[0.3em] text-gray-500 font-bold mb-2 md:mb-4">Visit Us</span>
-                  <p className="text-xl md:text-3xl font-bold tracking-tight">JOYLINE, LUMUMBA DRIVE, NAIROBI KASARANI DISTRICT, ROYSAMBU. P.O BOX 100946, 00100 - G.P.O NAIROBI,</p>
+                  <p className="text-lg md:text-2xl font-bold tracking-tight">JOYLINE, LUMUMBA DRIVE, NAIROBI KASARANI DISTRICT, ROYSAMBU. P.O BOX 100946, 00100 - G.P.O NAIROBI,</p>
                 </div>
               </div>
             </div>
@@ -75,7 +75,7 @@ export default function Contact() {
                 {Object.entries(socialLinks).map(([platform, url]) => (
                   <li key={platform}>
                     <a href={url} target="_blank" rel="noopener noreferrer" 
-                       className="text-4xl md:text-6xl font-black hover:text-gray-400 transition-all hover:pl-4 lg:hover:pr-4 lg:hover:pl-0 tracking-tighter inline-block">
+                       className="text-3xl md:text-5xl font-black hover:text-gray-400 transition-all hover:pl-4 lg:hover:pr-4 lg:hover:pl-0 tracking-tighter inline-block">
                       {platform}
                     </a>
                   </li>

@@ -33,17 +33,17 @@ export default function Vision() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row items-start lg:items-center gap-12 lg:gap-24">
           <div className="lg:w-1/3">
-            <h2 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] md:leading-none">
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] md:leading-none">
               WE<br/>DON'T MISS
             </h2>
           </div>
           <div className="lg:w-2/3">
-            <div className="space-y-8 text-xl md:text-2xl leading-relaxed text-gray-900 font-medium">
+            <div className="space-y-8 text-lg md:text-xl leading-relaxed text-gray-900 font-medium">
               <p className="italic">
                 A world where music experiences transcend performance to become 
                 transformative platforms for connection, cultural preservation, and artistic growth.
               </p>
-              <p className="text-lg md:text-xl text-gray-700">
+              <p className="text-base md:text-lg text-gray-700">
                 The objective is the development of a global platform that champions African 
                 talent,not just through curation and live experiences, but through artist 
                 development, strategic collaboration, and culturally grounded storytelling 

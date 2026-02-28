@@ -14,8 +14,8 @@ export default function Moments() {
     <section id="moments" className="py-24 bg-black text-white font-['Montserrat'] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-16">
-          <h2 className="text-6xl md:text-8xl font-black tracking-tighter leading-none mb-6">MOMENTS</h2>
-          <p className="text-xl text-gray-400 max-w-2xl font-medium">
+          <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-none mb-6">MOMENTS</h2>
+          <p className="text-lg text-gray-400 max-w-2xl font-medium">
             A glimpse into the energy, the culture, and the soul of the experiences curated across the city.
           </p>
         </div>

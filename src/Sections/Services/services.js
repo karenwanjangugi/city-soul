@@ -39,8 +39,8 @@ export default function Services() {
     <section id="services" className="py-24 bg-[#0d0d0d] text-white font-['Montserrat']">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold mb-4 tracking-tight">Our Services</h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <h2 className="text-4xl font-bold mb-4 tracking-tight">Our Services</h2>
+          <p className="text-gray-400 text-base max-w-2xl mx-auto">
             We provide a comprehensive range of services to help you create moments that matter and souls that shine.
           </p>
         </div>
@@ -49,7 +49,7 @@ export default function Services() {
           {servicesList.map((service, index) => (
             <SpotlightCard key={index} className="flex flex-col h-full">
               <div className="text-4xl mb-6">{service.icon}</div>
-              <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
+              <h3 className="text-xl font-bold mb-4">{service.title}</h3>
               <p className="text-gray-400 leading-relaxed">
                 {service.description}
               </p>
