@@ -102,31 +102,31 @@ export default function Moments() {
       {/* Popup Modal */}
       {selectedMoment && (
         <div 
-          className="fixed inset-0 z-[120] flex items-center justify-center p-4 bg-black/95 backdrop-blur-md"
+          className="fixed inset-0 z-[120] flex items-start md:items-center justify-center p-4 bg-black/95 backdrop-blur-md overflow-y-auto"
           onClick={closeModal}
         >
           <div 
-            className="relative max-w-5xl w-full bg-[#0a0a0a] rounded-[2rem] overflow-hidden border border-[#C91D73]/20 shadow-[0_0_50px_rgba(201,29,115,0.1)]"
+            className="relative max-w-5xl w-full bg-[#0a0a0a] rounded-[2rem] overflow-hidden border border-[#C91D73]/20 shadow-[0_0_50px_rgba(201,29,115,0.1)] my-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <button 
               onClick={closeModal}
-              className="absolute top-6 right-6 z-10 p-3 bg-black/50 hover:bg-[#C91D73] text-white rounded-full transition-all duration-300 border border-white/10 hover:border-transparent group"
+              className="absolute top-4 right-4 md:top-6 md:right-6 z-20 p-3 bg-black/50 hover:bg-[#C91D73] text-white rounded-full transition-all duration-300 border border-white/10 hover:border-transparent group"
             >
               <X size={20} className="group-hover:rotate-90 transition-transform duration-300" />
             </button>
             
-            <div className="flex flex-col md:flex-row min-h-[60vh]">
-              <div className="md:w-3/5 bg-black flex items-center justify-center p-2">
+            <div className="flex flex-col md:flex-row">
+              <div className="md:w-3/5 bg-black flex items-center justify-center p-2 min-h-[300px] md:min-h-0">
                 <img
                   src={selectedMoment.src}
                   alt={selectedMoment.alt}
-                  className="w-full h-full object-contain max-h-[60vh] md:max-h-[85vh] rounded-2xl"
+                  className="w-full h-full object-contain max-h-[50vh] md:max-h-[85vh] rounded-2xl"
                 />
               </div>
               <div className="md:w-2/5 p-8 md:p-12 flex flex-col justify-center bg-[#0d0d0d]">
                 <div className="inline-block px-3 py-1 bg-[#80E3FF]/10 rounded-full border border-[#80E3FF]/20 mb-6 w-fit">
-                  <span className="text-[10px] font-black tracking-[0.2em] text-[#80E3FF] uppercase">Feel The Moment</span>
+                  <span className="text-[10px] font-black tracking-[0.2em] text-[#80E3FF] uppercase">Experience</span>
                 </div>
                 <h3 className="text-4xl md:text-5xl text-white font-black mb-6 leading-[0.9] uppercase italic tracking-tighter">
                   {selectedMoment.title}
