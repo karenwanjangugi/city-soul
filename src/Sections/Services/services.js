@@ -49,7 +49,7 @@ export default function Services() {
           <div className="max-w-2xl">
             <div className="flex items-center gap-3 mb-4">
               <span className="h-1 w-8 bg-[#C91D73]"></span>
-              <span className="text-xs font-black uppercase tracking-widest text-[#80E3FF]">Capabilities</span>
+              <span className="text-xs font-black uppercase tracking-widest text-[#80E3FF]">Services</span>
             </div>
             <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-none uppercase italic">
               OUR<br/>SERVICES

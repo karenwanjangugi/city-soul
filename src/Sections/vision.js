@@ -18,7 +18,7 @@ export default function Vision() {
             <div className="space-y-8 text-lg md:text-xl leading-relaxed font-medium">
               <div className="relative">
                 <div className="absolute -left-6 top-0 bottom-0 w-1 bg-black/20"></div>
-                <p className="italic pl-6 text-black/80 text-xl md:text-2xl">
+                <p className="pl-6 text-black/80 text-xl md:text-2xl">
                   A world where music experiences transcend performance to become 
                   transformative platforms for connection, cultural preservation, and artistic growth.
                 </p>

@@ -126,7 +126,7 @@ export default function Moments() {
               </div>
               <div className="md:w-2/5 p-8 md:p-12 flex flex-col justify-center bg-[#0d0d0d]">
                 <div className="inline-block px-3 py-1 bg-[#80E3FF]/10 rounded-full border border-[#80E3FF]/20 mb-6 w-fit">
-                  <span className="text-[10px] font-black tracking-[0.2em] text-[#80E3FF] uppercase">Curated Discovery</span>
+                  <span className="text-[10px] font-black tracking-[0.2em] text-[#80E3FF] uppercase">Feel The Moment</span>
                 </div>
                 <h3 className="text-4xl md:text-5xl text-white font-black mb-6 leading-[0.9] uppercase italic tracking-tighter">
                   {selectedMoment.title}
