@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const moments = [
   { 
@@ -47,17 +47,29 @@ const moments = [
 ];
 
 export default function Moments() {
-  const [selectedMoment, setSelectedMoment] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(null);
 
-  const openModal = (moment) => {
-    setSelectedMoment(moment);
+  const openModal = (index) => {
+    setSelectedIndex(index);
     document.body.style.overflow = 'hidden';
   };
 
   const closeModal = () => {
-    setSelectedMoment(null);
+    setSelectedIndex(null);
     document.body.style.overflow = 'auto';
   };
+
+  const nextMoment = (e) => {
+    e.stopPropagation();
+    setSelectedIndex((prevIndex) => (prevIndex + 1) % moments.length);
+  };
+
+  const prevMoment = (e) => {
+    e.stopPropagation();
+    setSelectedIndex((prevIndex) => (prevIndex - 1 + moments.length) % moments.length);
+  };
+
+  const currentMoment = selectedIndex !== null ? moments[selectedIndex] : null;
 
   return (
     <section id="moments" className="py-24 bg-black text-[#C91D73] font-['Montserrat'] overflow-hidden relative border-t border-white/5">
@@ -78,7 +90,7 @@ export default function Moments() {
           {moments.map((moment, index) => (
             <div 
               key={index} 
-              onClick={() => openModal(moment)}
+              onClick={() => openModal(index)}
               className="relative group overflow-hidden rounded-2xl bg-[#111] break-inside-avoid border border-white/10 cursor-pointer transition-all duration-500 hover:border-[#C91D73]/40 shadow-xl"
             >
               <img
@@ -100,13 +112,31 @@ export default function Moments() {
       </div>
 
       {/* Popup Modal */}
-      {selectedMoment && (
+      {currentMoment && (
         <div 
-          className="fixed inset-0 z-[120] flex items-start md:items-center justify-center p-4 bg-black/95 backdrop-blur-md overflow-y-auto"
+          className="fixed inset-0 z-[120] flex items-center justify-center p-4 bg-black/95 backdrop-blur-md"
           onClick={closeModal}
         >
+          {/* Previous Button */}
+          <button 
+            onClick={prevMoment}
+            className="absolute left-4 md:left-8 z-30 p-4 bg-black/50 hover:bg-[#C91D73] text-white rounded-full transition-all duration-300 border border-white/10 hover:border-transparent group"
+            aria-label="Previous image"
+          >
+            <ChevronLeft size={24} className="group-hover:-translate-x-1 transition-transform" />
+          </button>
+
+          {/* Next Button */}
+          <button 
+            onClick={nextMoment}
+            className="absolute right-4 md:right-8 z-30 p-4 bg-black/50 hover:bg-[#C91D73] text-white rounded-full transition-all duration-300 border border-white/10 hover:border-transparent group"
+            aria-label="Next image"
+          >
+            <ChevronRight size={24} className="group-hover:translate-x-1 transition-transform" />
+          </button>
+
           <div 
-            className="relative max-w-5xl w-full bg-[#0a0a0a] rounded-[2rem] overflow-hidden border border-[#C91D73]/20 shadow-[0_0_50px_rgba(201,29,115,0.1)] my-auto"
+            className="relative max-w-5xl w-full bg-[#0a0a0a] rounded-[2rem] overflow-hidden border border-[#C91D73]/20 shadow-[0_0_50px_rgba(201,29,115,0.1)] max-h-[90vh] overflow-y-auto md:overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             <button 
@@ -116,12 +146,13 @@ export default function Moments() {
               <X size={20} className="group-hover:rotate-90 transition-transform duration-300" />
             </button>
             
-            <div className="flex flex-col md:flex-row">
+            <div className="flex flex-col md:flex-row h-full">
               <div className="md:w-3/5 bg-black flex items-center justify-center p-2 min-h-[300px] md:min-h-0">
                 <img
-                  src={selectedMoment.src}
-                  alt={selectedMoment.alt}
-                  className="w-full h-full object-contain max-h-[50vh] md:max-h-[85vh] rounded-2xl"
+                  key={currentMoment.src}
+                  src={currentMoment.src}
+                  alt={currentMoment.alt}
+                  className="w-full h-full object-contain max-h-[50vh] md:max-h-[85vh] rounded-2xl transition-opacity duration-500"
                 />
               </div>
               <div className="md:w-2/5 p-8 md:p-12 flex flex-col justify-center bg-[#0d0d0d]">
@@ -129,10 +160,10 @@ export default function Moments() {
                   <span className="text-[10px] font-black tracking-[0.2em] text-[#80E3FF] uppercase">Experience</span>
                 </div>
                 <h3 className="text-4xl md:text-5xl text-white font-black mb-6 leading-[0.9] uppercase italic tracking-tighter">
-                  {selectedMoment.title}
+                  {currentMoment.title}
                 </h3>
                 <p className="text-lg text-gray-400 font-medium leading-relaxed">
-                  {selectedMoment.description}
+                  {currentMoment.description}
                 </p>
                 <div className="mt-10 pt-8 border-t border-white/5 flex items-center justify-between">
                   <p className="text-[10px] text-[#C91D73] uppercase tracking-[0.3em] font-black">
