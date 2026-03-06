@@ -90,7 +90,7 @@ export default function Services() {
 
       {/* Background Graphic */}
       <div className="absolute top-0 right-0 p-4 md:p-12 opacity-[0.03] pointer-events-none select-none">
-        <h2 className="text-[10rem] md:text-[20rem] font-black leading-none tracking-tighter">SOUL</h2>
+        <h2 className="text-[7rem] md:text-[20rem] font-black leading-none tracking-tighter">SOUL</h2>
       </div>
     </section>
   );

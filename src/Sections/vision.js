@@ -42,7 +42,7 @@ export default function Vision() {
 
       {/* Background Detail */}
       <div className="absolute bottom-0 right-0 opacity-10 pointer-events-none overflow-hidden w-full h-full flex items-end justify-end">
-        <h2 className="text-[8rem] md:text-[15rem] font-black leading-none translate-y-1/4 translate-x-1/4 tracking-tighter">VISION</h2>
+        <h2 className="text-[6rem] md:text-[15rem] font-black leading-none translate-y-1/4 translate-x-1/10 md:translate-x-0 tracking-tighter uppercase">VISION</h2>
       </div>
     </section>
   );
