@@ -24,24 +24,40 @@ export default function Hero() {
       ctx.fillStyle = 'rgba(0, 0, 0, 1)';
       ctx.fillRect(0, 0, width, height);
 
-      // Draw text cutouts
+      // Draw text outline first (before the cutout)
       const text = 'FEEL THE\nMOMENT';
       const fontSize = Math.min(width * 0.15, width < 768 ? 80 : 250);
-      
-      ctx.font = `900 ${fontSize}px Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`;
-      ctx.textAlign = 'left';
-      ctx.textBaseline = 'middle';
-
-      ctx.globalCompositeOperation = 'destination-out';
-      ctx.fillStyle = 'rgba(0, 0, 0, 1)';
-      
       const lines = text.split('\n');
       const lineHeight = fontSize * 0.85;
       const totalHeight = lineHeight * lines.length;
-      
       const startY = height / 2 - totalHeight / 2 + (width < 768 ? 0 : 100);
       const startX = width < 768 ? 20 : 50;
 
+      ctx.font = `900 ${fontSize}px Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`;
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+      
+      // 1. Draw the Outline (Source-over)
+      ctx.globalCompositeOperation = 'source-over';
+      
+      // Create a diagonal gradient for the stroke
+      const gradient = ctx.createLinearGradient(startX, startY, startX + width * 0.5, startY + totalHeight);
+      gradient.addColorStop(0, '#C91D73'); // Pink
+      gradient.addColorStop(0.5, '#80E3FF'); // Light Blue
+      gradient.addColorStop(1, '#2A098C'); // Purple
+      
+      ctx.strokeStyle = gradient;
+      ctx.lineWidth = width < 768 ? 2 : 4;
+      ctx.lineJoin = 'round';
+      
+      lines.forEach((line, index) => {
+        ctx.strokeText(line, startX, startY + index * lineHeight + fontSize / 2);
+      });
+
+      // 2. Draw the Cutout (Destination-out)
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.fillStyle = 'rgba(0, 0, 0, 1)';
+      
       lines.forEach((line, index) => {
         ctx.fillText(line, startX, startY + index * lineHeight + fontSize / 2);
       });
