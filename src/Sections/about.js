@@ -2,55 +2,56 @@ import React from 'react';
 
 export default function About() {
   return (
-    <section id="about" className="py-24 md:py-32 bg-white text-black font-['Montserrat'] relative overflow-hidden min-h-screen flex items-center">
-      {/* Splatter Background */}
-      <img
-        src="/Splatter-19.svg"
-        alt=""
-        className="absolute top-[5%] -left-[10%] md:left-[5%] w-[300px] md:w-[600px] h-auto opacity-40 md:opacity-80 pointer-events-none z-0"
-        style={{ transform: 'rotate(-5deg)' }}
-      />
-
-      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
+    <section id="about" className="pt-12 pb-24 md:pt-16 md:pb-32 bg-[#80E3FF] text-black font-['Montserrat'] relative overflow-hidden min-h-screen flex items-center border-t border-black/5">
+      
+      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full pt-8 md:pt-12">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
           
-          {/* Left Column: Content */}
           <div className="flex-1 text-left">
-            <h2 className="text-5xl md:text-7xl font-black mb-8 md:mb-12 tracking-tighter leading-none">ABOUT</h2>
-            <div className="space-y-6 md:space-y-8 text-base md:text-lg leading-relaxed text-gray-900 font-medium max-w-xl">
+            <div className="flex items-center gap-4 mb-8 md:mb-12">
+              <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-none uppercase">ABOUT</h2>
+              <div className="h-px flex-1 bg-gradient-to-r from-black/40 to-transparent"></div>
+            </div>
+            
+            <div className="space-y-6 md:space-y-8 text-base md:text-lg leading-relaxed text-gray-900 font-medium max-w-xl border-l-2 border-[#C91D73] pl-6 md:pl-8">
               <p>
                 As a multidisciplinary creative producer, event curator, and artist manager with over
-                four years of experience, I develop impactful experiences that merge sound, culture,
-                and storytelling. My work spans event curation, artist development, creative direction,
+                four years of experience, Hunja develops impactful experiences that merge sound, culture,
+                and storytelling. Hunja's work spans event curation, artist development, creative direction,
                 live production, stakeholder engagement, studio coordination, and brand-aligned content
                 strategy.
               </p>
               <p>
-                I’ve built strong relationships with artists, venues, and industry players
+                Hunja has built strong relationships with artists, venues, and industry players
                 across East Africa, ensuring every project is collaborative, artist-first, and strategically
-                executed. Backed by a background in business and strategic management, I operate at the
+                executed. Backed by a background in business and strategic management, Hunja operates at the
                 intersection of creativity and structure, designing culturally resonant experiences that
-                drive sustainable growth, grounded in the belief that music is more than performance
-                ; it is connection, identity, and legacy.
+                drive sustainable growth.
               </p>
+              <div className="pt-4 flex items-center gap-2">
+                <span className="h-1 w-10 bg-[#C91D73] rounded-full"></span>
+                <span className="text-xs font-black uppercase tracking-widest">The Soul Behind the City</span>
+              </div>
             </div>
           </div>
 
-          {/* Right Column: Visual Stack */}
           <div className="flex-1 flex justify-center lg:justify-end w-full">
-            <div className="relative w-full max-w-[300px] md:max-w-[450px] aspect-[4/5]">
-              {/* The Black Background Plate (Offset) */}
+            <div className="relative w-full max-w-[300px] md:max-w-[450px] aspect-[4/5] group">
+              {/* Colored Offsets */}
               <div 
-                className="absolute top-6 left-6 md:top-10 md:left-10 w-full h-full bg-black z-0"
+                className="absolute top-4 left-4 md:top-8 md:left-8 w-full h-full bg-[#C91D73] z-0 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2"
+                aria-hidden="true"
+              ></div>
+              <div 
+                className="absolute top-8 left-8 md:top-14 md:left-14 w-full h-full bg-black/10 z-0"
                 aria-hidden="true"
               ></div>
               
-              {/* The Photo Container */}
-              <div className="relative z-10 w-full h-full bg-gray-200 shadow-xl overflow-hidden border border-gray-100">
+              <div className="relative z-10 w-full h-full bg-gray-200 shadow-2xl overflow-hidden border-2 border-black/5">
                 <img 
                   src="/photo.png" 
                   alt="City Soul Culture" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700"
                 />
               </div>
             </div>

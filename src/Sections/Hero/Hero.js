@@ -26,14 +26,12 @@ export default function Hero() {
 
       // Draw text cutouts
       const text = 'FEEL THE\nMOMENT';
-      // Adjust font size based on screen width
       const fontSize = Math.min(width * 0.15, width < 768 ? 80 : 250);
       
       ctx.font = `900 ${fontSize}px Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`;
       ctx.textAlign = 'left';
       ctx.textBaseline = 'middle';
 
-      // Create clipping path for text (cutout effect)
       ctx.globalCompositeOperation = 'destination-out';
       ctx.fillStyle = 'rgba(0, 0, 0, 1)';
       
@@ -41,7 +39,6 @@ export default function Hero() {
       const lineHeight = fontSize * 0.85;
       const totalHeight = lineHeight * lines.length;
       
-      // Vertical centering with offset
       const startY = height / 2 - totalHeight / 2 + (width < 768 ? 0 : 100);
       const startX = width < 768 ? 20 : 50;
 
@@ -57,25 +54,20 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative h-screen w-full overflow-hidden bg-black">
-      {/* VIDEO BACKGROUND */}
       <video
         autoPlay
         muted
         loop
         playsInline
-        // poster="/photo.png"
         className="absolute inset-0 w-full h-full object-cover"
       >
         <source src="/video.mp4" type="video/mp4" />
       </video>
 
-      {/* CANVAS OVERLAY WITH TEXT CUTOUTS */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 z-10 block"
       />
-
     </section>
   );
 }
-
