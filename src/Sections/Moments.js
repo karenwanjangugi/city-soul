@@ -77,11 +77,11 @@ export default function Moments() {
       <div className="max-w-7xl mx-auto px-6 pt-16 md:pt-24">
         <div className="mb-16">
           <div className="flex items-center gap-4 mb-6">
-            <h2 className="text-5xl md:text-7xl text-[#C91D73] font-black tracking-tighter leading-none">MOMENTS</h2>
+            <h2 className="text-4xl md:text-6xl text-[#C91D73] font-black tracking-tighter leading-none uppercase">Experiences We've Curated</h2>
             <div className="h-px flex-1 bg-gradient-to-r from-[#C91D73] to-transparent opacity-30"></div>
           </div>
           <p className="text-lg text-gray-400 max-w-2xl font-medium border-l-2 border-[#80E3FF] pl-6">
-            A glimpse into the energy, the culture, and the soul of the experiences curated across the city.
+            Clients trust evidence of previous experiences. Here's a glimpse into the soulful live music events in Nairobi, experiential concerts, and vibrant venue programming we've brought to life.
           </p>
         </div>
 

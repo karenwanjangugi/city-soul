@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Lenis from 'lenis';
 import logo from './logo.svg';
 import Vision from './Sections/vision';
 import About from './Sections/about';
@@ -15,15 +16,34 @@ export default function App() {
 
   const navItems = [
     { label: 'Home', href: '#home' },
-    { label: 'Vision', href: '#vision' },
-    { label: 'Moments', href: '#moments' },
+    { label: 'About', href: '#vision' },
+    { label: 'Experiences', href: '#moments' },
     { label: 'Services', href: '#services' },
     { label: 'Testimonials', href: '#testimonials' },
-    { label: 'About', href: '#about' },
+    { label: 'The Soul', href: '#about' },
     { label: 'Contact', href: '#contact' },
   ];
 
   useEffect(() => {
+    // Initialize Lenis smooth scrolling
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -41,7 +61,10 @@ export default function App() {
       if (el) observer.observe(el);
     });
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      lenis.destroy();
+    };
   }, []);
 
   return (
