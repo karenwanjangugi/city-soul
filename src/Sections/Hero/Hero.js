@@ -49,7 +49,9 @@ export default function Hero() {
       const dpr = window.devicePixelRatio || 1;
       const width = window.innerWidth;
       const height = window.innerHeight;
-      
+      const isMobile = width < 768;
+      const isCompact = width < 1300;
+
       canvas.width = width * dpr;
       canvas.height = height * dpr;
       canvas.style.width = width + 'px';
@@ -60,28 +62,32 @@ export default function Hero() {
       ctx.fillStyle = 'rgba(0, 0, 0, 0.75)';
       ctx.fillRect(0, 0, width, height);
 
-      // Cinematic Cutout Text - Positioned TOP RIGHT
-      const text = 'MUSIC.\nCULTURE.\nMOMENTS.';
-      const fontSize = Math.min(width * 0.08, width < 768 ? 35 : 120);
-      const lines = text.split('\n');
-      const lineHeight = fontSize * 1.0;
+      // Cinematic Cutout Text - Positioned TOP RIGHT (Default) or TOP LEFT (Compact)
+      const text = isCompact ? 'MUSIC. CULTURE. MOMENTS.' : 'MUSIC.\nCULTURE.\nMOMENTS.';
+      const fontSize = isCompact 
+        ? Math.min(width * (isMobile ? 0.05 : 0.045), isMobile ? 20 : 50)
+        : Math.min(width * (isMobile ? 0.12 : 0.08), isMobile ? 40 : 100);
       
-      const startY = height * 0.2; 
-      const startX = width < 768 ? width - 20 : width - 80;
+      const lines = text.split('\n');
+      const lineHeight = fontSize * 1.1;
+      
+      const startY = height * (isMobile ? 0.12 : 0.15); 
+      const startX = isCompact ? (isMobile ? 24 : 80) : (isMobile ? width - 20 : width - 80);
 
       ctx.font = `900 ${fontSize}px Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`;
-      ctx.textAlign = 'right';
+      ctx.textAlign = isCompact ? 'left' : 'right';
       ctx.textBaseline = 'top';
       
       // 1. Draw the Outline
       ctx.globalCompositeOperation = 'source-over';
-      const gradient = ctx.createLinearGradient(startX, startY, startX - width * 0.4, startY + (lineHeight * lines.length));
+      const gradientEndX = isCompact ? startX + width * 0.6 : startX - width * 0.4;
+      const gradient = ctx.createLinearGradient(startX, startY, gradientEndX, startY + (lineHeight * lines.length));
       gradient.addColorStop(0, '#C91D73');
       gradient.addColorStop(0.5, '#80E3FF');
       gradient.addColorStop(1, '#2A098C');
       
       ctx.strokeStyle = gradient;
-      ctx.lineWidth = width < 768 ? 2 : 5;
+      ctx.lineWidth = isMobile ? 1.5 : 4;
       ctx.lineJoin = 'round';
       
       lines.forEach((line, index) => {
@@ -141,48 +147,48 @@ export default function Hero() {
         className="absolute inset-0 z-10 block pointer-events-none"
       />
 
-      {/* Content Overlay - Positioned at the bottom to avoid canvas cutout text */}
-      <div className="absolute inset-0 z-20 flex flex-col justify-end pb-24 md:pb-32 px-6 md:px-20 pointer-events-none">
-        <div className="max-w-4xl pointer-events-auto">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="h-0.5 w-12 bg-[#80E3FF]"></span>
-            <span className="text-[#80E3FF] text-xs md:text-sm font-black tracking-[0.4em] uppercase">City Soul Experience</span>
+      {/* Content Overlay - Better mobile positioning */}
+      <div className="absolute inset-0 z-20 flex flex-col justify-center md:justify-end pb-12 md:pb-32 px-6 md:px-20 pointer-events-none">
+        <div className="max-w-4xl pointer-events-auto mt-24 md:mt-0">
+          <div className="flex items-center gap-3 mb-4 md:mb-6">
+            <span className="h-0.5 w-8 md:w-12 bg-[#80E3FF]"></span>
+            <span className="text-[#80E3FF] text-[10px] md:text-sm font-black tracking-[0.3em] md:tracking-[0.4em] uppercase whitespace-nowrap">City Soul Experience</span>
           </div>
 
-          <div className="space-y-6 text-white/90 max-w-2xl leading-relaxed">
-            <h1 className="text-3xl md:text-6xl font-black text-white italic tracking-tight leading-[1.1]">
+          <div className="space-y-4 md:space-y-6 text-white/90 max-w-2xl leading-relaxed">
+            <h1 className="text-3xl md:text-6xl font-black text-white italic tracking-tight mb-2 md:mb-4 leading-[1.1]">
               Music. Culture.<br/>Unforgettable Moments.
             </h1>
-            <p className="text-lg md:text-xl font-medium text-gray-200 max-w-xl">
+            <p className="text-sm md:text-xl font-medium text-gray-200 max-w-xl">
               We curate live music, DJ experiences and immersive entertainment that transform events into powerful shared memories.
             </p>
             
-            <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs md:text-sm font-black text-[#C91D73] uppercase tracking-widest pt-4">
-              <span className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-white rounded-full"></span>
+            <div className="flex flex-wrap gap-x-4 md:gap-x-6 gap-y-2 text-[10px] md:text-sm font-black text-[#C91D73] uppercase tracking-widest pt-2 md:pt-4">
+              <span className="flex items-center gap-1.5 md:gap-2">
+                <span className="w-1 h-1 md:w-1.5 md:h-1.5 bg-white rounded-full"></span>
                 For Brands
               </span>
-              <span className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-white rounded-full"></span>
+              <span className="flex items-center gap-1.5 md:gap-2">
+                <span className="w-1 h-1 md:w-1.5 md:h-1.5 bg-white rounded-full"></span>
                 For Venues
               </span>
-              <span className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-white rounded-full"></span>
+              <span className="flex items-center gap-1.5 md:gap-2">
+                <span className="w-1 h-1 md:w-1.5 md:h-1.5 bg-white rounded-full"></span>
                 For the Culture
               </span>
             </div>
           </div>
           
-          <div className="mt-12 flex flex-col sm:flex-row gap-4">
+          <div className="mt-8 md:mt-12 flex flex-col sm:flex-row gap-3 md:gap-4">
             <a 
               href="#contact" 
-              className="px-10 py-5 bg-[#C91D73] text-white font-black uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all duration-300 text-center shadow-2xl"
+              className="px-6 md:px-10 py-4 md:py-5 bg-[#C91D73] text-white font-black uppercase tracking-widest text-[10px] md:text-xs hover:bg-white hover:text-black transition-all duration-300 text-center shadow-2xl"
             >
               Curate My Event
             </a>
             <a 
               href="#moments" 
-              className="px-10 py-5 border-2 border-white text-white font-black uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all duration-300 text-center"
+              className="px-6 md:px-10 py-4 md:py-5 border-2 border-white text-white font-black uppercase tracking-widest text-[10px] md:text-xs hover:bg-white hover:text-black transition-all duration-300 text-center"
             >
               Explore Experiences
             </a>
