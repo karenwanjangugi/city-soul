@@ -74,24 +74,25 @@ export default function Hero() {
         <div className="absolute inset-0 bg-black/50 z-10" />
       </div>
 
-      {/* Content Overlay - Restored original left-aligned layout */}
-      <div className="absolute inset-0 z-20 flex flex-col justify-center md:justify-end pb-12 md:pb-32 px-6 md:px-20">
-        <div className="max-w-4xl mt-24 md:mt-0">
-          <div className="flex items-center gap-3 mb-6 md:mb-8 animate-fade-in">
+      {/* Content Overlay - Centered layout */}
+      <div className="absolute inset-0 z-20 flex flex-col justify-center items-center pb-12 md:pb-0 px-6 md:px-20">
+        <div className="max-w-4xl text-center">
+          {/* <div className="flex items-center justify-center gap-3 mb-6 md:mb-8 animate-fade-in">
             <span className="h-0.5 w-8 md:w-12 bg-[#80E3FF]"></span>
             <span className="text-[#80E3FF] text-[10px] md:text-sm font-black tracking-[0.4em] uppercase whitespace-nowrap">City Soul Experience</span>
-          </div>
+            <span className="h-0.5 w-8 md:w-12 bg-[#80E3FF]"></span>
+          </div> */}
 
-          <div className="space-y-6 md:space-y-8 text-white/95 max-w-3xl leading-relaxed">
+          <div className="space-y-6 md:space-y-8 text-white/95 max-w-3xl mx-auto leading-relaxed">
             <h1 className="text-4xl md:text-5xl lg:text-4xl xl:text-6xl font-black text-white italic tracking-tight mb-4 md:mb-6 leading-[1.05]">
               Music. Culture.<br/>
               Unforgettable Moments.
             </h1>
-            <p className="text-base md:text-xl lg:text-2xl font-medium text-gray-100 max-w-2xl leading-relaxed">
+            <p className="text-base md:text-xl lg:text-2xl font-medium text-gray-100 max-w-2xl mx-auto leading-relaxed">
               We curate live music, DJ experiences and immersive entertainment that transform events into powerful shared memories.
             </p>
             
-            <div className="flex flex-wrap gap-x-6 md:gap-x-8 gap-y-3 text-[10px] md:text-xs font-black text-[#C91D73] uppercase tracking-[0.2em] pt-2">
+            <div className="flex flex-wrap justify-center gap-x-6 md:gap-x-8 gap-y-3 text-[10px] md:text-xs font-black text-[#C91D73] uppercase tracking-[0.2em] pt-2">
               <span className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 bg-white rounded-full shadow-[0_0_8px_white]"></span>
                 For Brands
@@ -107,7 +108,7 @@ export default function Hero() {
             </div>
           </div>
           
-          <div className="mt-10 md:mt-14 flex flex-col sm:flex-row gap-4">
+          <div className="mt-10 md:mt-14 flex flex-col sm:flex-row justify-center gap-4">
             <a 
               href="#contact" 
               className="px-8 md:px-12 py-4 md:py-5 bg-[#C91D73] text-white font-black uppercase tracking-widest text-[10px] md:text-xs hover:bg-white hover:text-black transition-all duration-300 text-center shadow-2xl"

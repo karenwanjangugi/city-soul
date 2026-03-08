@@ -45,7 +45,7 @@ export default function Vision() {
           end: 'bottom top',
           scrub: 1,
         },
-        x: -100,
+        x: window.innerWidth < 768 ? -50 : -200,
         ease: 'none'
       });
     }, sectionRef);
@@ -92,7 +92,7 @@ export default function Vision() {
 
       {/* Background Detail */}
       <div className="absolute bottom-0 right-0 opacity-10 pointer-events-none overflow-hidden w-full h-full flex items-end justify-end">
-        <h2 ref={bgTextRef} className="text-[6rem] md:text-[15rem] font-black leading-none translate-y-1/4 translate-x-1/10 md:translate-x-0 tracking-tighter uppercase whitespace-nowrap">CULTURE EXPERIENCE</h2>
+        <h2 ref={bgTextRef} className="text-[12vw] md:text-[15rem] font-black leading-none translate-y-1/4 translate-x-[5%] md:translate-x-0 tracking-tighter uppercase whitespace-nowrap">CULTURE EXPERIENCE</h2>
       </div>
     </section>
   );
