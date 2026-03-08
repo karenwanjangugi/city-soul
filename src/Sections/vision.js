@@ -75,13 +75,13 @@ export default function Vision() {
                 </p>
               </div>
               <div className="space-y-6">
-                <p className="text-base md:text-lg leading-relaxed">
+                <p className="text-base md:text-lg leading-relaxed text-black/80">
                   We believe music has the power to shape memories. The right sound can transform the energy of a room and bring people together in meaningful ways.
                 </p>
-                <p className="text-base md:text-lg leading-relaxed">
+                <p className="text-base md:text-lg leading-relaxed text-black/80">
                   Our work sits at the intersection of music, culture and live experiences, bringing together talented artists, DJs and creatives to design moments that stay with people long after the music fades.
                 </p>
-                <p className="text-base md:text-lg leading-relaxed border-t border-black/10 pt-6">
+                <p className="text-base md:text-lg leading-relaxed border-t border-black/10 pt-6 text-black/80">
                   We collaborate with brands, venues and event organisers to craft experiences that feel intentional, vibrant and deeply human.
                 </p>
               </div>

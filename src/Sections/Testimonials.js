@@ -57,7 +57,7 @@ export default function Testimonials() {
 
       {/* Background Graphic */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.02] pointer-events-none w-full text-center overflow-hidden">
-        <span className="text-[20vw] md:text-[30vw] font-black tracking-tighter uppercase leading-none">STREET</span>
+        <span className="text-[20vw] md:text-[30vw] font-black tracking-tighter uppercase leading-none text-white">STREET</span>
       </div>
     </section>
   );

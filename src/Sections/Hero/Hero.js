@@ -77,11 +77,6 @@ export default function Hero() {
       {/* Content Overlay - Centered layout */}
       <div className="absolute inset-0 z-20 flex flex-col justify-center items-center pb-12 md:pb-0 px-6 md:px-20">
         <div className="max-w-4xl text-center">
-          {/* <div className="flex items-center justify-center gap-3 mb-6 md:mb-8 animate-fade-in">
-            <span className="h-0.5 w-8 md:w-12 bg-[#80E3FF]"></span>
-            <span className="text-[#80E3FF] text-[10px] md:text-sm font-black tracking-[0.4em] uppercase whitespace-nowrap">City Soul Experience</span>
-            <span className="h-0.5 w-8 md:w-12 bg-[#80E3FF]"></span>
-          </div> */}
 
           <div className="space-y-6 md:space-y-8 text-white/95 max-w-3xl mx-auto leading-relaxed">
             <h1 className="text-4xl md:text-5xl lg:text-4xl xl:text-6xl font-black text-white italic tracking-tight mb-4 md:mb-6 leading-[1.05]">
