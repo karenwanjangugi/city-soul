@@ -375,6 +375,16 @@ export default function Services() {
         )}
       </div>
 
+         {/* Closing Section */}
+        <div className="mt-10 py-20 border-t border-white/10 text-center relative">
+         
+          <h4 className="text-4xl md:text-7xl font-black uppercase italic tracking-tighter leading-[0.9] mb-12">
+            Great music doesn’t just fill a space<br/>
+            <span className="text-transparent" style={{ WebkitTextStroke: '1px #C91D73' }}>it transforms how people experience it.</span>
+          </h4>
+
+        </div>
+
       {/* Background Graphic */}
       <div className="absolute -bottom-20 -right-20 opacity-[0.03] pointer-events-none select-none hidden lg:block">
         <h2 className="text-[30rem] font-black leading-none tracking-tighter italic">SOUL</h2>
