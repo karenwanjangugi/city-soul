@@ -9,7 +9,7 @@ const backgroundAssets = [
   { 
     type: 'image', 
     src: '/crowd.jpg', 
-    alt: 'Live Band Performance' 
+    alt: 'Picture perfect moments' 
   },
   { 
     type: 'image', 
@@ -23,7 +23,7 @@ const backgroundAssets = [
   },
   { 
     type: 'image', 
-    src: 'https://images.unsplash.com/photo-1514525253361-bee8a187449a?auto=format&fit=crop&q=80&w=2000', 
+    src: '/moments/image6.jpg', 
     alt: 'Intimate Music moments' 
   },
 ];
