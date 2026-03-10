@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { X, ArrowRight } from 'lucide-react';
+import { X, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SpotlightCard from './SpotlightCard';
@@ -96,10 +96,11 @@ const servicesList = [
 ];
 
 export default function Services() {
-  const [selectedService, setSelectedService] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(null);
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const gridRef = useRef(null);
+  const contentRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -130,31 +131,66 @@ export default function Services() {
     return () => ctx.revert();
   }, []);
 
-  // Simplified Scroll Lock that works with Lenis
+  // Keyboard navigation & body scroll lock
   useEffect(() => {
-    if (selectedService) {
+    const handleKeyDown = (e) => {
+      if (selectedIndex === null) return;
+      
+      if (e.key === 'ArrowRight') {
+        nextService();
+      } else if (e.key === 'ArrowLeft') {
+        prevService();
+      } else if (e.key === 'Escape') {
+        closeModal();
+      }
+    };
+
+    if (selectedIndex !== null) {
       document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
     } else {
       document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
     }
+
     return () => {
       document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [selectedService]);
+  }, [selectedIndex]);
 
-  const openModal = (service) => {
-    setSelectedService(service);
+  // Reset scroll position when changing service in modal
+  useEffect(() => {
+    if (contentRef.current) {
+      contentRef.current.scrollTop = 0;
+    }
+  }, [selectedIndex]);
+
+  const openModal = (index) => {
+    setSelectedIndex(index);
   };
 
   const closeModal = () => {
-    setSelectedService(null);
+    setSelectedIndex(null);
   };
+
+  const nextService = (e) => {
+    if (e) e.stopPropagation();
+    setSelectedIndex((prev) => (prev + 1) % servicesList.length);
+  };
+
+  const prevService = (e) => {
+    if (e) e.stopPropagation();
+    setSelectedIndex((prev) => (prev - 1 + servicesList.length) % servicesList.length);
+  };
+
+  const selectedService = selectedIndex !== null ? servicesList[selectedIndex] : null;
 
   return (
     <section 
       id="services" 
       ref={sectionRef} 
-      className={`py-32 bg-[#0a051d] text-white font-['Montserrat'] relative border-t border-white/5 transition-all duration-300 ${selectedService ? 'z-[10000]' : 'z-10'}`}
+      className={`py-32 bg-[#0a051d] text-white font-['Montserrat'] relative border-t border-white/5 transition-all duration-300 ${selectedIndex !== null ? 'z-[10000]' : 'z-10'}`}
     >
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -180,7 +216,7 @@ export default function Services() {
           {servicesList.map((service, index) => (
             <div 
               key={service.id} 
-              onClick={() => openModal(service)}
+              onClick={() => openModal(index)}
               className="group cursor-pointer h-full"
             >
               <SpotlightCard className="h-full flex flex-col bg-black/20 border-white/10 hover:border-white/30 transition-all duration-500 p-8 md:p-10 min-h-[450px]">
@@ -218,6 +254,24 @@ export default function Services() {
             className="fixed inset-0 z-[10001] flex items-center justify-center p-4 md:p-8 lg:p-12 bg-black/95 backdrop-blur-xl"
             onClick={closeModal}
           >
+            {/* Previous Button */}
+            <button 
+              onClick={prevService}
+              className="absolute left-4 md:left-8 z-[10004] p-4 bg-black/50 hover:bg-[#C91D73] text-white rounded-full transition-all duration-300 border border-white/10 hover:border-transparent group hidden md:block"
+              aria-label="Previous service"
+            >
+              <ChevronLeft size={24} className="group-hover:-translate-x-1 transition-transform" />
+            </button>
+
+            {/* Next Button */}
+            <button 
+              onClick={nextService}
+              className="absolute right-4 md:right-8 z-[10004] p-4 bg-black/50 hover:bg-[#C91D73] text-white rounded-full transition-all duration-300 border border-white/10 hover:border-transparent group hidden md:block"
+              aria-label="Next service"
+            >
+              <ChevronRight size={24} className="group-hover:translate-x-1 transition-transform" />
+            </button>
+
             <div 
               className="relative max-w-6xl w-full bg-[#111] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl flex flex-col md:flex-row max-h-[90vh] z-[10002]"
               onClick={(e) => e.stopPropagation()}
@@ -233,9 +287,10 @@ export default function Services() {
               {/* Modal Image Section */}
               <div className="w-full md:w-[45%] h-[250px] md:h-auto relative overflow-hidden flex-shrink-0">
                 <img 
+                  key={selectedService.image}
                   src={selectedService.image} 
                   alt={selectedService.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-opacity duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-transparent opacity-60"></div>
                 <div className="absolute bottom-8 left-8 flex flex-col gap-2">
@@ -244,8 +299,9 @@ export default function Services() {
                 </div>
               </div>
 
-              {/* Modal Content Section - added data-lenis-prevent */}
+              {/* Modal Content Section */}
               <div 
+                ref={contentRef}
                 className="w-full md:w-[55%] p-8 md:p-16 overflow-y-auto custom-scrollbar bg-[#111]"
                 data-lenis-prevent
               >
@@ -318,16 +374,6 @@ export default function Services() {
           </div>
         )}
       </div>
-
-   {/* Closing Section */}
-        <div className="mt-10 py-20 border-t border-white/10 text-center relative">
-         
-          <h4 className="text-4xl md:text-7xl font-black uppercase italic tracking-tighter leading-[0.9] mb-12">
-            Great music doesn’t just fill a space<br/>
-            <span className="text-transparent" style={{ WebkitTextStroke: '1px #C91D73' }}>it transforms how people experience it.</span>
-          </h4>
-
-        </div>
 
       {/* Background Graphic */}
       <div className="absolute -bottom-20 -right-20 opacity-[0.03] pointer-events-none select-none hidden lg:block">
