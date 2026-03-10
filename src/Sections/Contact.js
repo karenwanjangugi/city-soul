@@ -13,7 +13,7 @@ export default function Contact() {
 
   const socialLinks = {
     INSTAGRAM: "https://www.instagram.com/hunja_wangui/",
-    LINKEDIN: "https://www.linkedin.com/in/kelvin-hunja",
+    LINKEDIN: "https://www.linkedin.com/company/city-soul-experience/",
   };
 
   useEffect(() => {
