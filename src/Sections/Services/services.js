@@ -151,7 +151,11 @@ export default function Services() {
   };
 
   return (
-    <section id="services" ref={sectionRef} className="py-32 bg-[#0a051d] text-white font-['Montserrat'] relative overflow-hidden border-t border-white/5">
+    <section 
+      id="services" 
+      ref={sectionRef} 
+      className={`py-32 bg-[#0a051d] text-white font-['Montserrat'] relative border-t border-white/5 transition-all duration-300 ${selectedService ? 'z-[10000]' : 'z-10'}`}
+    >
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
@@ -211,17 +215,17 @@ export default function Services() {
         {/* Modal Overlay */}
         {selectedService && (
           <div 
-            className="fixed inset-0 z-[120] flex items-center justify-center p-4 md:p-8 lg:p-12 bg-black/95 backdrop-blur-xl"
+            className="fixed inset-0 z-[10001] flex items-center justify-center p-4 md:p-8 lg:p-12 bg-black/95 backdrop-blur-xl"
             onClick={closeModal}
           >
             <div 
-              className="relative max-w-6xl w-full bg-[#111] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl flex flex-col md:flex-row max-h-[90vh]"
+              className="relative max-w-6xl w-full bg-[#111] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl flex flex-col md:flex-row max-h-[90vh] z-[10002]"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
               <button 
                 onClick={closeModal}
-                className="absolute top-6 right-6 z-[130] p-4 bg-black/50 hover:bg-[#C91D73] text-white rounded-full transition-all duration-300 border border-white/10 hover:border-transparent group"
+                className="absolute top-6 right-6 z-[10003] p-4 bg-black/50 hover:bg-[#C91D73] text-white rounded-full transition-all duration-300 border border-white/10 hover:border-transparent group"
               >
                 <X size={24} className="group-hover:rotate-90 transition-transform" />
               </button>
@@ -315,7 +319,7 @@ export default function Services() {
         )}
       </div>
 
-           {/* Closing Section */}
+   {/* Closing Section */}
         <div className="mt-10 py-20 border-t border-white/10 text-center relative">
          
           <h4 className="text-4xl md:text-7xl font-black uppercase italic tracking-tighter leading-[0.9] mb-12">
@@ -324,7 +328,6 @@ export default function Services() {
           </h4>
 
         </div>
-    
 
       {/* Background Graphic */}
       <div className="absolute -bottom-20 -right-20 opacity-[0.03] pointer-events-none select-none hidden lg:block">
