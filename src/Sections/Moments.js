@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const moments = [
@@ -49,6 +49,23 @@ const moments = [
 export default function Moments() {
   const [selectedIndex, setSelectedIndex] = useState(null);
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (selectedIndex === null) return;
+      
+      if (e.key === 'ArrowRight') {
+        nextMoment();
+      } else if (e.key === 'ArrowLeft') {
+        prevMoment();
+      } else if (e.key === 'Escape') {
+        closeModal();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedIndex]);
+
   const openModal = (index) => {
     setSelectedIndex(index);
     document.body.style.overflow = 'hidden';
@@ -60,12 +77,12 @@ export default function Moments() {
   };
 
   const nextMoment = (e) => {
-    e.stopPropagation();
+    if (e) e.stopPropagation();
     setSelectedIndex((prevIndex) => (prevIndex + 1) % moments.length);
   };
 
   const prevMoment = (e) => {
-    e.stopPropagation();
+    if (e) e.stopPropagation();
     setSelectedIndex((prevIndex) => (prevIndex - 1 + moments.length) % moments.length);
   };
 

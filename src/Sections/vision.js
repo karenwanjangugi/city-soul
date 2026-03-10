@@ -71,7 +71,7 @@ export default function Vision() {
               <div className="relative">
                 <div className="absolute -left-6 top-0 bottom-0 w-1 bg-black/20"></div>
                 <p className="pl-6 text-black/80 text-xl md:text-2xl italic font-bold">
-                  City Soul Experience is a premier entertainment company in Nairobi and a dedicated experiential entertainment company focused on creating moments that feel alive, soulful and unforgettable.
+                 City Soul Experience is an entertainment and experiential events company dedicated to creating moments that feel alive, soulful and unforgettable.
                 </p>
               </div>
               <div className="space-y-6">

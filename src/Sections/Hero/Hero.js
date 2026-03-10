@@ -8,7 +8,7 @@ const backgroundAssets = [
   },
   { 
     type: 'image', 
-    src: 'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&q=80&w=2000', 
+    src: '/crowd.jpg', 
     alt: 'Live Band Performance' 
   },
   { 
