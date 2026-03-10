@@ -4,7 +4,7 @@ const backgroundAssets = [
   { 
     type: 'video', 
     src: '/video.mp4',
-    fallback: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=2000'
+    fallback: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=2000'
   },
   { 
     type: 'image', 
@@ -13,7 +13,7 @@ const backgroundAssets = [
   },
   { 
     type: 'image', 
-    src: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=2000', 
+    src: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=2000', 
     alt: 'Crowd Energy' 
   },
   { 
