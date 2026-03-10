@@ -5,7 +5,7 @@ const moments = [
   { 
     src: '/moments/image1.jpg', 
     alt: 'Elijah Kitaka Performing', 
-    title: 'Elijah Kitaka Live', 
+    title: 'Elijah Kitaka Live in NBO', 
     description: "It was an honor to curate and produce Elijah Kitaka's first event in Nairobi in 2025, bringing his unique sound to our local stage." 
   },
   { 
@@ -16,9 +16,9 @@ const moments = [
   },
   { 
     src: '/moments/image3.JPG', 
-    alt: 'Authentic Connections', 
-    title: 'Authentic Spirit', 
-    description: 'Capturing the genuine spirit and community that fuels our local music scene.' 
+    alt: 'Sofar Kigali', 
+    title: 'Sofar Kigali', 
+    description: 'Road manager providing logistics support from Nairobi to Kigali to facilitate Muthaka`s event in Kigali.' 
   },
   { 
     src: '/moments/image4.jpg', 
@@ -34,7 +34,7 @@ const moments = [
   },
   { 
     src: '/moments/image6.jpg', 
-    alt: 'Cultural Moments', 
+    alt: 'Elijah Kitaka fan experience', 
     title: 'City Rhythms', 
     description: "Celebrating the diverse creative energy that makes Nairobi's music culture so vibrant." 
   },
