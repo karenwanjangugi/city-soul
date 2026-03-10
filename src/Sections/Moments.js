@@ -113,16 +113,24 @@ export default function Moments() {
               <img
                 src={moment.src}
                 alt={moment.alt}
-                className="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-105"
+                className="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80 group-hover:opacity-100"
                 loading="lazy"
               />
-              {/* Refined Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
-                <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <span className="block text-xs font-bold tracking-[0.2em] text-[#80E3FF] mb-2 uppercase">Experience</span>
-                  <span className="text-white font-black tracking-tight text-xl uppercase leading-none">{moment.title}</span>
+              
+              {/* Persistent Title Overlay */}
+              <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black via-black/80 to-transparent">
+                <div className="transform transition-transform duration-500 group-hover:-translate-y-1">
+                  <span className="block text-[10px] font-black tracking-[0.3em] text-[#80E3FF] mb-1 uppercase">
+                    Experience
+                  </span>
+                  <span className="text-white font-black tracking-tight text-lg uppercase leading-none italic">
+                    {moment.title}
+                  </span>
                 </div>
               </div>
+
+              {/* Hover Glow Effect */}
+              <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#C91D73]/20 rounded-2xl transition-all duration-500"></div>
             </div>
           ))}
         </div>
