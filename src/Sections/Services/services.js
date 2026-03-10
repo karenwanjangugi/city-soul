@@ -1,18 +1,18 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { X, ArrowRight } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
+import SpotlightCard from './SpotlightCard';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import SpotlightCard from './SpotlightCard';
+
 
 gsap.registerPlugin(ScrollTrigger);
+
 
 const servicesList = [
   {
     id: "live-music",
     title: "Live Music Experiences",
-    shortDescription: "Soulful performances featuring talented singers, bands and instrumentalists curated for the moment.",
-    detailedDescription: "City Soul curates soulful live music performances featuring talented singers, bands and instrumentalists who know how to connect with audiences. Every performance is thoughtfully selected to match the mood, audience and atmosphere of your event.",
-    fullContent: "There is something timeless about live music. A voice, an instrument, a room full of people listening together. It creates a sense of presence that no playlist ever could. Whether the goal is to create a warm and intimate environment or to energise a crowd, we ensure the music feels natural to the moment. The result is an experience where guests don’t just attend, they feel the moment.",
+    description: "There is something timeless about live music. A voice, an instrument, a room full of people listening together. It creates a sense of presence that no playlist ever could.",
+    detailedDescription: "City Soul curates soulful live music performances featuring talented singers, bands and instrumentalists who know how to connect with audiences. Every performance is thoughtfully selected to match the mood, audience and atmosphere of your event. Whether the goal is to create a warm and intimate environment or to energise a crowd, we ensure the music feels natural to the moment. The result is an experience where guests don’t just attend, they feel the moment.",
     perfectFor: [
       "Corporate events seeking a refined and engaging atmosphere",
       "Weddings and celebrations that deserve memorable musical moments",
@@ -25,9 +25,8 @@ const servicesList = [
   {
     id: "dj",
     title: "DJ Experiences",
-    shortDescription: "Our DJs curate musical journeys that guide the flow of an event from beginning to end.",
-    detailedDescription: "City Soul DJs curate musical journeys that guide the flow of an event from beginning to end. Whether it’s a relaxed afternoon gathering, a stylish evening reception, or a vibrant dance floor.",
-    fullContent: "A great DJ does more than play songs. They read the room. They understand timing. They know when to elevate the energy and when to let a moment breathe. We carefully match DJs to the style, audience and intention of each event, ensuring the music feels authentic to the moment. When done right, a DJ doesn’t just entertain, they shape the emotional rhythm of the night.",
+    description: "A great DJ does more than play songs. They read the room. They understand timing. They know when to elevate the energy and when to let a moment breathe.",
+    detailedDescription: "City Soul DJs curate musical journeys that guide the flow of an event from beginning to end. Whether it’s a relaxed afternoon gathering, a stylish evening reception, or a vibrant dance floor, our DJs create a soundtrack that fits the atmosphere and keeps guests engaged. We carefully match DJs to the style, audience and intention of each event, ensuring the music feels authentic to the moment. When done right, a DJ doesn’t just entertain, they shape the emotional rhythm of the night.",
     perfectFor: [
       "Brand events and product launches",
       "Private parties and celebrations",
@@ -40,9 +39,8 @@ const servicesList = [
   {
     id: "event-programming",
     title: "Event Entertainment Programming",
-    shortDescription: "We design full entertainment programmes that ensure the energy of an event evolves naturally.",
-    detailedDescription: "City Soul designs full entertainment programmes that ensure the energy of an event evolves naturally from beginning to end.",
-    fullContent: "Great events are rarely remembered for a single moment. They are remembered for the flow of experiences that unfold throughout the evening. By thoughtfully programming the entertainment, we help events feel intentional, dynamic and cohesive rather than a series of disconnected performances. Our role is to ensure entertainment becomes a central part of the experience, not just an addition to it.",
+    description: "Great events are rarely remembered for a single moment. They are remembered for the flow of experiences that unfold throughout the evening.",
+    detailedDescription: "City Soul designs full entertainment programmes that ensure the energy of an event evolves naturally from beginning to end. By thoughtfully programming the entertainment, we help events feel intentional, dynamic and cohesive rather than a series of disconnected performances. Our role is to ensure entertainment becomes a central part of the experience, not just an addition to it.",
     curateList: [
       "Artist and performer selection",
       "Music direction and event atmosphere",
@@ -61,24 +59,23 @@ const servicesList = [
   {
     id: "venue-programming",
     title: "Venue Music Programming & Residencies",
-    shortDescription: "Partnering with hospitality spaces to design consistent music programmes and residencies.",
-    detailedDescription: "City Soul partners with restaurants, hotels, lounges and lifestyle spaces to design consistent music programmes and artist residencies.",
-    fullContent: "For hospitality spaces, music is more than background sound; it is part of the identity of the venue. The right music programme can shape how guests experience a space, influence how long they stay, and define the character of the venue. A residency allows a venue to build a recognizable musical identity through regular performances by carefully selected artists or DJs. Over time, these recurring experiences create familiarity, community and anticipation among guests.",
+    description: "For hospitality spaces, music is more than background sound; it is part of the identity of the venue.",
+    detailedDescription: "The right music programme can shape how guests experience a space, influence how long they stay, and define the character of the venue. City Soul partners with restaurants, hotels, lounges and lifestyle spaces to design consistent music programmes and artist residencies that elevate their atmosphere and attract audiences. A residency allows a venue to build a recognizable musical identity through regular performances by carefully selected artists or DJs.",
     curateList: [
       "Curated live music nights",
       "DJ residencies and themed music experiences",
       "Weekly or monthly music programming",
       "Artist bookings aligned with the venue’s brand and audience"
     ],
+    extraInfo: "Over time, these recurring experiences create familiarity, community and anticipation among guests. When music and atmosphere align, a venue becomes more than a location it becomes a destination people return to.",
     image: "/services/pexels-wolfgang-1002140-2747446.jpg",
     color: "#80E3FF"
   },
   {
     id: "experiential",
     title: "Experiential Entertainment Concepts",
-    shortDescription: "Immersive entertainment experiences that blend music, storytelling, and art.",
-    detailedDescription: "City Soul designs immersive entertainment experiences that blend music, storytelling, art and audience interaction.",
-    fullContent: "Some moments call for something beyond traditional performances. These experiences move beyond simply watching a performance and invite audiences to step into the atmosphere of the music itself. Our goal is to design experiences that feel unique, immersive and memorable—the kind people talk about long after the event ends.",
+    description: "Some moments call for something beyond traditional performances.",
+    detailedDescription: "City Soul designs immersive entertainment experiences that blend music, storytelling, art and audience interaction to create moments that feel distinct and deeply engaging. These experiences move beyond simply watching a performance and invite audiences to step into the atmosphere of the music itself.",
     examples: [
       "Experiential concerts that combine performance and audience interaction",
       "Themed music experiences inspired by culture, storytelling or artistic concepts",
@@ -90,199 +87,190 @@ const servicesList = [
       "creative festivals",
       "intimate artistic gatherings"
     ],
+    finalThought: "Our goal is to design experiences that feel unique, immersive and memorable—the kind people talk about long after the event ends.",
     image: "/services/person-close-up-recording-video-with-smartphone-concert.jpg",
     color: "#C91D73"
   }
 ];
 
+
 export default function Services() {
-  const [selectedService, setSelectedService] = useState(null);
   const sectionRef = useRef(null);
-  const titleRef = useRef(null);
-  const gridRef = useRef(null);
+  const introRef = useRef(null);
+  const serviceRefs = useRef([]);
+  const closingRef = useRef(null);
+
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(titleRef.current, {
+      // Intro animation
+      gsap.from(introRef.current.children, {
         scrollTrigger: {
-          trigger: titleRef.current,
-          start: 'top 85%',
+          trigger: introRef.current,
+          start: 'top 80%',
         },
         y: 40,
         opacity: 0,
         duration: 1,
+        stagger: 0.1,
         ease: 'power3.out'
       });
 
-      gsap.from(gridRef.current.children, {
+
+      // Services animation
+      serviceRefs.current.forEach((el, i) => {
+        if (!el) return;
+       
+        const isEven = i % 2 === 0;
+        const image = el.querySelector('.service-image');
+        const content = el.querySelector('.service-content');
+
+
+        gsap.from(image, {
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 70%',
+          },
+          x: isEven ? -100 : 100,
+          opacity: 0,
+          duration: 1.5,
+          ease: 'power4.out'
+        });
+
+
+        gsap.from(content, {
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 70%',
+          },
+          x: isEven ? 100 : -100,
+          opacity: 0,
+          duration: 1.5,
+          ease: 'power4.out'
+        });
+      });
+
+
+      // Closing animation
+      gsap.from(closingRef.current, {
         scrollTrigger: {
-          trigger: gridRef.current,
-          start: 'top 75%',
+          trigger: closingRef.current,
+          start: 'top 90%',
         },
-        y: 60,
+        y: 50,
         opacity: 0,
-        duration: 1,
-        stagger: 0.15,
-        ease: 'power4.out'
+        duration: 1.2,
+        ease: 'power3.out'
       });
     }, sectionRef);
+
 
     return () => ctx.revert();
   }, []);
 
-  // Simplified Scroll Lock that works with Lenis
-  useEffect(() => {
-    if (selectedService) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [selectedService]);
-
-  const openModal = (service) => {
-    setSelectedService(service);
-  };
-
-  const closeModal = () => {
-    setSelectedService(null);
-  };
 
   return (
-    <section id="services" ref={sectionRef} className="py-32 bg-[#0a051d] text-white font-['Montserrat'] relative overflow-hidden border-t border-white/5">
-      
+    <section id="services" ref={sectionRef} className="py-24 bg-[#0a051d] text-white font-['Montserrat'] relative overflow-hidden border-t border-white/5">
+     
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        
-        {/* Header Section */}
-        <div ref={titleRef} className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-12">
-          <div className="max-w-2xl">
-            <div className="flex items-center gap-3 mb-6">
-              <span className="h-[2px] w-12 bg-[#C91D73]"></span>
-              <span className="text-xs font-black uppercase tracking-[0.4em] text-[#80E3FF]">What We Do</span>
-            </div>
-            <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.85] uppercase italic">
-              OUR<br/>SERVICES
-            </h2>
+       
+        {/* Intro Section */}
+        <div ref={introRef} className="mb-40 max-w-5xl">
+          <div className="flex items-center gap-3 mb-8">
+            <span className="h-[2px] w-12 bg-[#C91D73]"></span>
+            <span className="text-xs font-black uppercase tracking-[0.4em] text-[#80E3FF]">What We Do</span>
           </div>
-          <p className="text-xl md:text-2xl text-white/80 max-w-md font-medium border-l-2 border-white/20 pl-8 italic">
-            At City Soul Experience, we believe that music is more than entertainment; it is the <span className="text-white">invisible architecture</span> of an experience.
-          </p>
-        </div>
-
-        {/* Services Grid */}
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {servicesList.map((service, index) => (
-            <div 
-              key={service.id} 
-              onClick={() => openModal(service)}
-              className="group cursor-pointer h-full"
-            >
-              <SpotlightCard className="h-full flex flex-col bg-black/20 border-white/10 hover:border-white/30 transition-all duration-500 p-8 md:p-10 min-h-[450px]">
-                <div className="relative mb-12 overflow-hidden rounded-2xl aspect-square lg:aspect-video shadow-xl">
-                  <img 
-                    src={service.image} 
-                    alt={service.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
-                  />
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors"></div>
-                  <div className="absolute bottom-4 right-4 text-[10px] font-black tracking-widest text-white/50">0{index+1}</div>
-                </div>
-
-                <div className="flex-1 space-y-4">
-                  <h3 className="text-2xl md:text-3xl font-black uppercase italic tracking-tighter group-hover:text-[#80E3FF] transition-colors leading-none">
-                    {service.title}
-                  </h3>
-                  <p className="text-white/60 font-medium leading-relaxed line-clamp-3 group-hover:text-white/80 transition-colors">
-                    {service.shortDescription}
-                  </p>
-                </div>
-
-                <div className="mt-10 flex items-center gap-4 text-[#80E3FF] font-black uppercase tracking-widest text-xs group-hover:gap-6 transition-all">
-                  <span>Explore Details</span>
-                  <ArrowRight size={16} />
-                </div>
-              </SpotlightCard>
+          <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.85] uppercase italic mb-12">
+            THE INVISIBLE<br/>ARCHITECTURE<br/>
+            <span className="text-transparent" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.8)' }}>OF AN EXPERIENCE</span>
+          </h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <p className="text-2xl md:text-3xl font-bold leading-tight text-white/90">
+              At City Soul Experience, we believe that music is more than entertainment; it is the invisible architecture of an experience.
+            </p>
+            <div className="space-y-6 text-lg text-gray-400 font-medium border-l-2 border-white/10 pl-8">
+              <p>The right music can transform how people feel in a space. It can shift the mood of a room, spark connections between strangers, and turn a gathering into a memory that lingers long after the night ends.</p>
+              <p>Our role is to curate the sound, energy and atmosphere of moments that matter. Through thoughtfully selected artists, DJs and immersive music concepts, we design experiences that feel intentional, soulful and alive.</p>
+              <p className="text-white font-bold italic pt-4">Whether it’s an intimate gathering, a brand activation, or a venue looking to shape its identity through music, City Soul ensures that the soundtrack of the experience is never accidental.</p>
             </div>
-          ))}
+          </div>
         </div>
 
-        {/* Modal Overlay */}
-        {selectedService && (
-          <div 
-            className="fixed inset-0 z-[120] flex items-center justify-center p-4 md:p-8 lg:p-12 bg-black/95 backdrop-blur-xl"
-            onClick={closeModal}
-          >
-            <div 
-              className="relative max-w-6xl w-full bg-[#111] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl flex flex-col md:flex-row max-h-[90vh]"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Close Button */}
-              <button 
-                onClick={closeModal}
-                className="absolute top-6 right-6 z-[130] p-4 bg-black/50 hover:bg-[#C91D73] text-white rounded-full transition-all duration-300 border border-white/10 hover:border-transparent group"
-              >
-                <X size={24} className="group-hover:rotate-90 transition-transform" />
-              </button>
 
-              {/* Modal Image Section */}
-              <div className="w-full md:w-[45%] h-[250px] md:h-auto relative overflow-hidden flex-shrink-0">
-                <img 
-                  src={selectedService.image} 
-                  alt={selectedService.title}
-                  className="w-full h-full object-cover"
+        {/* Services List */}
+        <div className="space-y-48">
+          {servicesList.map((service, index) => (
+            <div
+              key={service.id}
+              ref={el => serviceRefs.current[index] = el}
+              className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-16 lg:gap-24 items-center`}
+            >
+              {/* Image Column */}
+              <div className="service-image w-full lg:w-[45%] aspect-[4/5] relative group rounded-[2.5rem] overflow-hidden shadow-2xl">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-transparent opacity-60"></div>
-                <div className="absolute bottom-8 left-8 flex flex-col gap-2">
-                  <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#80E3FF]">The Experience</span>
-                  <h4 className="text-3xl font-black uppercase italic tracking-tighter text-white">{selectedService.id.replace('-', ' ')}</h4>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a051d]/80 via-transparent to-transparent opacity-60"></div>
+               
+                {/* Visual Accent */}
+                <div
+                  className="absolute top-8 right-8 w-16 h-16 rounded-full border-2 border-white/20 flex items-center justify-center backdrop-blur-sm group-hover:border-white/50 transition-colors"
+                >
+                  <span className="text-xs font-black tracking-widest">0{index + 1}</span>
                 </div>
               </div>
 
-              {/* Modal Content Section - added data-lenis-prevent */}
-              <div 
-                className="w-full md:w-[55%] p-8 md:p-16 overflow-y-auto custom-scrollbar bg-[#111]"
-                data-lenis-prevent
-              >
-                <div className="mb-12">
-                  <div className="h-1 w-20 mb-8" style={{ backgroundColor: selectedService.color }}></div>
-                  <h3 className="text-4xl md:text-6xl font-black uppercase italic leading-[0.9] tracking-tighter mb-8">
-                    {selectedService.title}
-                  </h3>
-                  <p className="text-xl md:text-2xl font-bold text-white leading-tight italic">
-                    {selectedService.detailedDescription}
-                  </p>
-                </div>
 
-                <div className="space-y-12">
-                  <div className="space-y-6">
-                    <p className="text-lg text-white/60 font-medium leading-relaxed">
-                      {selectedService.fullContent}
-                    </p>
+              {/* Content Column */}
+              <div className="service-content w-full lg:w-[55%] space-y-10">
+                <SpotlightCard className="bg-white/[0.02] border-white/5 p-10 md:p-12 hover:border-white/10 transition-all duration-500">
+                  <div className="mb-10">
+                    <h3 className="text-4xl md:text-6xl font-black uppercase italic leading-[0.9] tracking-tighter mb-6">
+                      {service.title}
+                    </h3>
+                    <div className="h-1.5 w-24 rounded-full" style={{ backgroundColor: service.color }}></div>
                   </div>
 
-                  {selectedService.perfectFor && (
-                    <div className="pt-10 border-t border-white/5">
+
+                  <div className="space-y-8">
+                    <p className="text-xl md:text-2xl font-bold text-white/95 leading-snug italic">
+                      {service.description}
+                    </p>
+                    <p className="text-lg text-gray-400 leading-relaxed font-medium">
+                      {service.detailedDescription}
+                    </p>
+                    {service.extraInfo && (
+                      <p className="text-lg text-gray-400 leading-relaxed font-medium border-l-2 border-[#80E3FF]/30 pl-6 italic">
+                        {service.extraInfo}
+                      </p>
+                    )}
+                  </div>
+
+
+                  {service.perfectFor && (
+                    <div className="mt-12 pt-10 border-t border-white/5">
                       <p className="text-[10px] font-black uppercase tracking-[0.4em] text-[#80E3FF] mb-8">Perfect for:</p>
-                      <ul className="grid grid-cols-1 gap-4">
-                        {selectedService.perfectFor.map((item, i) => (
-                          <li key={i} className="text-sm text-white/50 flex items-start gap-4 group/item hover:text-white transition-colors">
-                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: selectedService.color }}></span>
-                            <span className="leading-snug">{item}</span>
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-10">
+                        {service.perfectFor.map((item, i) => (
+                          <li key={i} className="text-sm text-gray-400 flex items-start gap-4 group/item">
+                            <span className="mt-1.5 w-2 h-2 rounded-full flex-shrink-0 transition-all duration-300 group-hover/item:scale-125" style={{ backgroundColor: service.color }}></span>
+                            <span className="leading-tight group-hover/item:text-white transition-colors">{item}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
                   )}
 
-                  {selectedService.curateList && (
-                    <div className="pt-10 border-t border-white/5">
+
+                  {service.curateList && (
+                    <div className="mt-12 pt-10 border-t border-white/5">
                       <p className="text-[10px] font-black uppercase tracking-[0.4em] text-[#80E3FF] mb-8">We curate & coordinate:</p>
-                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
-                        {selectedService.curateList.map((item, i) => (
-                          <li key={i} className="text-sm text-white/50 flex items-start gap-3">
-                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: selectedService.color }}></span>
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-10">
+                        {service.curateList.map((item, i) => (
+                          <li key={i} className="text-sm text-gray-400 flex items-start gap-4">
+                            <span className="mt-1.5 w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: service.color }}></span>
                             <span className="leading-tight">{item}</span>
                           </li>
                         ))}
@@ -290,51 +278,62 @@ export default function Services() {
                     </div>
                   )}
 
-                  {selectedService.examples && (
-                    <div className="pt-10 border-t border-white/5">
-                      <p className="text-[10px] font-black uppercase tracking-[0.4em] text-[#80E3FF] mb-8">Concept Examples:</p>
-                      <ul className="space-y-4">
-                        {selectedService.examples.map((item, i) => (
-                          <li key={i} className="text-base text-white/70 flex items-start gap-4 italic font-medium">
-                            <span className="mt-2 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: selectedService.color }}></span>
-                            <span className="leading-snug">{item}</span>
+
+                  {service.examples && (
+                    <div className="mt-12 pt-10 border-t border-white/5">
+                      <p className="text-[10px] font-black uppercase tracking-[0.4em] text-[#80E3FF] mb-8">Examples include:</p>
+                      <ul className="space-y-5">
+                        {service.examples.map((item, i) => (
+                          <li key={i} className="text-base text-gray-300 flex items-start gap-4 italic font-medium">
+                            <span className="mt-2 w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: service.color }}></span>
+                            <span className="leading-tight">{item}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
                   )}
-                </div>
 
-                <div className="mt-24 pt-12 border-t border-white/5 flex items-center justify-between">
-                  <p className="text-[10px] font-black uppercase tracking-[0.5em] text-white/20">City Soul Experience</p>
-                  <div className="h-1.5 w-1.5 rounded-full bg-[#C91D73]"></div>
-                </div>
+
+                  {service.finalThought && (
+                    <p className="mt-12 text-sm font-bold text-white/60 italic uppercase tracking-wider">
+                      {service.finalThought}
+                    </p>
+                  )}
+                </SpotlightCard>
               </div>
             </div>
+          ))}
+        </div>
+
+
+        {/* Closing Section */}
+        <div ref={closingRef} className="mt-64 py-32 border-t border-white/10 text-center relative">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-[#C91D73] to-transparent"></div>
+         
+          <h4 className="text-4xl md:text-7xl font-black uppercase italic tracking-tighter leading-[0.9] mb-12">
+            Great music doesn’t just fill a space<br/>
+            <span className="text-transparent" style={{ WebkitTextStroke: '1px #C91D73' }}>it transforms how people experience it.</span>
+          </h4>
+         
+          <div className="flex justify-center gap-6 mt-16">
+            {[1,2,3].map(i => (
+              <div key={i} className="w-1.5 h-1.5 rounded-full bg-white/10"></div>
+            ))}
           </div>
-        )}
+        </div>
       </div>
+
 
       {/* Background Graphic */}
-      <div className="absolute -bottom-20 -right-20 opacity-[0.03] pointer-events-none select-none hidden lg:block">
-        <h2 className="text-[30rem] font-black leading-none tracking-tighter italic">SOUL</h2>
+      <div className="absolute top-1/4 -right-20 opacity-[0.02] pointer-events-none select-none hidden lg:block">
+        <h2 className="text-[25rem] font-black leading-none tracking-tighter rotate-90">SERVICES</h2>
       </div>
-
-      <style dangerouslySetInnerHTML={{ __html: `
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: rgba(255, 255, 255, 0.02);
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: rgba(255, 255, 255, 0.1);
-          border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: #C91D73;
-        }
-      `}} />
+      <div className="absolute bottom-1/4 -left-20 opacity-[0.02] pointer-events-none select-none hidden lg:block">
+        <h2 className="text-[25rem] font-black leading-none tracking-tighter -rotate-90">EXPERIENCE</h2>
+      </div>
     </section>
   );
 }
+
+
+
