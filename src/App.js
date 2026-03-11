@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import Lenis from 'lenis';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import logo from './logo.svg';
 import Vision from './Sections/vision';
 import About from './Sections/about';
@@ -10,6 +12,7 @@ import PillNav from './Sections/Hero/PillNav';
 import Hero from './Sections/Hero/Hero';
 import Moments from './Sections/Moments';
 
+gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
   const [activeHref, setActiveHref] = useState('#home');
@@ -37,12 +40,14 @@ export default function App() {
       touchMultiplier: 2,
     });
 
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+    // Synchronize Lenis with ScrollTrigger
+    lenis.on('scroll', ScrollTrigger.update);
 
-    requestAnimationFrame(raf);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -64,6 +69,7 @@ export default function App() {
     return () => {
       observer.disconnect();
       lenis.destroy();
+      gsap.ticker.remove(lenis.raf);
     };
   }, []);
 

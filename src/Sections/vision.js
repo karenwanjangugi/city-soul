@@ -11,7 +11,16 @@ export default function Vision() {
   const bgTextRef = useRef(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
+    const mm = gsap.matchMedia();
+
+    mm.add({
+      // Mobile
+      isMobile: "(max-width: 767px)",
+      // Desktop
+      isDesktop: "(min-width: 768px)",
+    }, (context) => {
+      const { isMobile } = context.conditions;
+
       // Fade in title
       gsap.from(titleRef.current, {
         scrollTrigger: {
@@ -45,12 +54,12 @@ export default function Vision() {
           end: 'bottom top',
           scrub: 1,
         },
-        x: window.innerWidth < 768 ? -50 : -200,
+        x: isMobile ? -50 : -200,
         ease: 'none'
       });
     }, sectionRef);
 
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
 
   return (
