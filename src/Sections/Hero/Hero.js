@@ -79,7 +79,7 @@ export default function Hero() {
         <div className="max-w-4xl text-center">
 
           <div className="space-y-6 md:space-y-8 text-white/95 max-w-3xl mx-auto leading-relaxed">
-            <h1 className="text-4xl md:text-5xl lg:text-4xl xl:text-6xl font-black text-white italic tracking-tight mb-4 md:mb-6 leading-[1.05]">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white italic tracking-tight mb-4 md:mb-6 leading-[1.05]">
               Music. Culture.<br/>
               Unforgettable Moments.
             </h1>
