@@ -8,6 +8,16 @@ module.exports = {
     extend: {
       fontFamily: {
         montserrat: ['Montserrat', 'sans-serif'],
+        lora: ['Lora', 'serif'],
+        poppins: ['Poppins', 'sans-serif'],
+      },
+      colors: {
+        indigo: '#2A098C',
+        magenta: '#C81D73',
+        cyan: '#7FE4FF',
+        deepcyan: '#1597B8',
+        ink: '#2E2A40',
+        offwhite: '#F5F3FB',
       },
     },
   },

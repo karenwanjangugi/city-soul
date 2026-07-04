@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { goToContact } from '../../utils/contactIntent';
 
 const PillNav = ({
   items = [],
@@ -52,9 +53,20 @@ const PillNav = ({
         />
       </div>
 
-      {/* Mobile/Tablet Toggle Button - Top Right */}
-      <div className="lg:hidden fixed top-6 right-6 z-[120]">
-        <button 
+      {/* Mobile/Tablet Right Controls - Enquire + Toggle */}
+      <div className="lg:hidden fixed top-6 right-6 z-[120] flex items-center gap-3">
+        <a
+          href="#contact"
+          onClick={(e) => {
+            e.preventDefault();
+            setIsMobileMenuOpen(false);
+            goToContact('general');
+          }}
+          className="px-4 py-2.5 bg-magenta text-white font-black uppercase tracking-widest text-[10px] rounded-full shadow-2xl hover:bg-white hover:text-black transition-all duration-300"
+        >
+          Enquire
+        </a>
+        <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="p-3 bg-black/60 backdrop-blur-md rounded-full border border-white/20 text-white shadow-2xl transition-transform active:scale-90"
         >
@@ -63,7 +75,7 @@ const PillNav = ({
       </div>
 
       {/* Desktop Unified Navigation Bar */}
-      <nav 
+      <nav
         className={`fixed top-8 left-1/2 -translate-x-1/2 z-[100] hidden lg:flex items-center p-2 rounded-full border border-white/20 backdrop-blur-lg shadow-2xl w-max max-w-[95vw] ${className}`}
         style={{ backgroundColor: `rgba(0, 0, 0, 0.5)` }}
       >
@@ -114,6 +126,21 @@ const PillNav = ({
               </a>
             );
           })}
+        </div>
+
+        {/* Persistent Enquire CTA */}
+        <div className="flex items-center pl-1 ml-1 border-l border-white/10 shrink-0">
+          <a
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault();
+              setIsMobileMenuOpen(false);
+              goToContact('general');
+            }}
+            className="px-3 xl:px-4 py-2 bg-magenta text-white font-black uppercase tracking-[0.1em] xl:tracking-[0.15em] text-[10px] xl:text-[11px] rounded-full whitespace-nowrap hover:bg-white hover:text-black transition-all duration-300"
+          >
+            Enquire
+          </a>
         </div>
       </nav>
 

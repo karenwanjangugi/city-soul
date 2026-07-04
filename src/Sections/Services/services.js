@@ -20,7 +20,7 @@ const servicesList = [
       "Lifestyle events where music becomes part of the identity of the space"
     ],
     image: "/services/pexels-ingo-1755086.jpg",
-    color: "#C91D73"
+    color: "#C81D73"
   },
   {
     id: "dj",
@@ -35,7 +35,7 @@ const servicesList = [
       "After-parties and late-night experiences"
     ],
     image: "/services/pexels-danielnouri-8448573.jpg",
-    color: "#80E3FF"
+    color: "#7FE4FF"
   },
   {
     id: "event-programming",
@@ -56,7 +56,7 @@ const servicesList = [
       "Experiential events"
     ],
     image: "/services/people-having-fun-wedding-hall.jpg",
-    color: "#C91D73"
+    color: "#C81D73"
   },
   {
     id: "venue-programming",
@@ -71,7 +71,7 @@ const servicesList = [
       "Artist bookings aligned with the venue’s brand and audience"
     ],
     image: "/services/pexels-wolfgang-1002140-2747446.jpg",
-    color: "#80E3FF"
+    color: "#7FE4FF"
   },
   {
     id: "experiential",
@@ -91,8 +91,39 @@ const servicesList = [
       "intimate artistic gatherings"
     ],
     image: "/services/person-close-up-recording-video-with-smartphone-concert.jpg",
-    color: "#C91D73"
+    color: "#C81D73"
   }
+];
+
+const pillars = [
+  {
+    key: 'experiences',
+    title: 'Experiences',
+    description: 'Live music · DJ experiences · event entertainment programming · venue residencies · experiential concepts · event production',
+    href: '#experiences-detail',
+    status: 'active',
+  },
+  {
+    key: 'talent',
+    title: 'Talent',
+    description: 'Artist management & development · bookings (artists, DJs, bands) · music production (Executive Producer)',
+    href: '#roster',
+    status: 'active',
+  },
+  {
+    key: 'advisory',
+    title: 'Advisory',
+    description: 'Entertainment strategy · venue programming direction · event consultancy · market-entry advisory',
+    href: '#advisory',
+    status: 'active',
+  },
+  {
+    key: 'media',
+    title: 'Media & Content',
+    description: 'Journalism · podcasts · festival interviews · scene coverage',
+    href: null,
+    status: 'coming-soon',
+  },
 ];
 
 export default function Services() {
@@ -187,28 +218,77 @@ export default function Services() {
   const selectedService = selectedIndex !== null ? servicesList[selectedIndex] : null;
 
   return (
-    <section 
-      id="services" 
-      ref={sectionRef} 
-      className={`py-32 bg-[#0a051d] text-white font-['Montserrat'] relative border-t border-white/5 transition-all duration-300 ${selectedIndex !== null ? 'z-[10000]' : 'z-10'}`}
+    <section
+      id="services"
+      ref={sectionRef}
+      className={`py-32 bg-[#0a051d] text-white font-poppins relative border-t border-white/5 transition-all duration-300 ${selectedIndex !== null ? 'z-[10000]' : 'z-10'}`}
     >
-      
+
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        
+
         {/* Header Section */}
-        <div ref={titleRef} className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-12">
+        <div ref={titleRef} className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-12">
           <div className="max-w-2xl">
             <div className="flex items-center gap-3 mb-6">
-              <span className="h-[2px] w-12 bg-[#C91D73]"></span>
-              <span className="text-xs font-black uppercase tracking-[0.4em] text-[#80E3FF]">What We Do</span>
+              <span className="h-[2px] w-12 bg-magenta"></span>
+              <span className="text-xs font-black uppercase tracking-[0.4em] text-cyan">What We Do</span>
             </div>
-            <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.85] uppercase italic">
+            <h2 className="font-lora text-5xl md:text-8xl font-black tracking-tighter leading-[0.85] uppercase italic">
               OUR<br/>SERVICES
             </h2>
           </div>
-          <p className="text-xl md:text-2xl text-white/80 max-w-md font-medium border-l-2 border-white/20 pl-8 italic">
+          <p className="font-lora text-xl md:text-2xl text-white/80 max-w-md font-medium border-l-2 border-white/20 pl-8 italic">
             At City Soul Experience, we believe that music is more than entertainment; it is the <span className="text-white">invisible architecture</span> of an experience.
           </p>
+        </div>
+
+        {/* Four Pillars */}
+        <div className="mb-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {pillars.map((pillar) => {
+            const CardInner = (
+              <>
+                <div className="flex items-center justify-between mb-6">
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-cyan">Pillar</span>
+                  {pillar.status === 'coming-soon' && (
+                    <span className="text-[9px] font-black uppercase tracking-[0.2em] text-black bg-cyan px-3 py-1 rounded-full">
+                      Coming Soon
+                    </span>
+                  )}
+                </div>
+                <h3 className="font-lora text-2xl font-black uppercase italic tracking-tighter mb-4 leading-none">
+                  {pillar.title}
+                </h3>
+                <p className="text-sm text-white/60 leading-relaxed">
+                  {pillar.description}
+                </p>
+              </>
+            );
+
+            return pillar.href ? (
+              <a
+                key={pillar.key}
+                href={pillar.href}
+                className="group block h-full bg-black/20 border border-white/10 hover:border-magenta/60 rounded-2xl p-7 transition-all duration-300"
+              >
+                {CardInner}
+              </a>
+            ) : (
+              <div
+                key={pillar.key}
+                className="h-full bg-black/20 border border-white/5 rounded-2xl p-7 opacity-70"
+              >
+                {CardInner}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Experiences Pillar — Detail */}
+        <div id="experiences-detail" className="mb-16 scroll-mt-32">
+          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-cyan mb-3 block">Experiences, in detail</span>
+          <h3 className="font-lora text-3xl md:text-5xl font-black uppercase italic tracking-tighter">
+            Live Music, DJ &amp; Event Experiences
+          </h3>
         </div>
 
         {/* Services Grid */}
@@ -221,9 +301,10 @@ export default function Services() {
             >
               <SpotlightCard className="h-full flex flex-col bg-black/20 border-white/10 hover:border-white/30 transition-all duration-500 p-8 md:p-10 min-h-[450px]">
                 <div className="relative mb-12 overflow-hidden rounded-2xl aspect-square lg:aspect-video shadow-xl">
-                  <img 
-                    src={service.image} 
+                  <img
+                    src={service.image}
                     alt={service.title}
+                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
                   />
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors"></div>
@@ -231,7 +312,7 @@ export default function Services() {
                 </div>
 
                 <div className="flex-1 space-y-4">
-                  <h3 className="text-2xl md:text-3xl font-black uppercase italic tracking-tighter group-hover:text-[#80E3FF] transition-colors leading-none">
+                  <h3 className="font-lora text-2xl md:text-3xl font-black uppercase italic tracking-tighter group-hover:text-cyan transition-colors leading-none">
                     {service.title}
                   </h3>
                   <p className="text-white/60 font-medium leading-relaxed line-clamp-3 group-hover:text-white/80 transition-colors">
@@ -239,7 +320,7 @@ export default function Services() {
                   </p>
                 </div>
 
-                <div className="mt-10 flex items-center gap-4 text-[#80E3FF] font-black uppercase tracking-widest text-xs group-hover:gap-6 transition-all">
+                <div className="mt-10 flex items-center gap-4 text-cyan font-black uppercase tracking-widest text-xs group-hover:gap-6 transition-all">
                   <span>Explore Details</span>
                   <ArrowRight size={16} />
                 </div>
@@ -257,7 +338,7 @@ export default function Services() {
             {/* Previous Button */}
             <button 
               onClick={prevService}
-              className="absolute left-4 md:left-8 z-[10004] p-4 bg-black/50 hover:bg-[#C91D73] text-white rounded-full transition-all duration-300 border border-white/10 hover:border-transparent group hidden md:block"
+              className="absolute left-4 md:left-8 z-[10004] p-4 bg-black/50 hover:bg-magenta text-white rounded-full transition-all duration-300 border border-white/10 hover:border-transparent group hidden md:block"
               aria-label="Previous service"
             >
               <ChevronLeft size={24} className="group-hover:-translate-x-1 transition-transform" />
@@ -266,7 +347,7 @@ export default function Services() {
             {/* Next Button */}
             <button 
               onClick={nextService}
-              className="absolute right-4 md:right-8 z-[10004] p-4 bg-black/50 hover:bg-[#C91D73] text-white rounded-full transition-all duration-300 border border-white/10 hover:border-transparent group hidden md:block"
+              className="absolute right-4 md:right-8 z-[10004] p-4 bg-black/50 hover:bg-magenta text-white rounded-full transition-all duration-300 border border-white/10 hover:border-transparent group hidden md:block"
               aria-label="Next service"
             >
               <ChevronRight size={24} className="group-hover:translate-x-1 transition-transform" />
@@ -279,7 +360,7 @@ export default function Services() {
               {/* Close Button */}
               <button 
                 onClick={closeModal}
-                className="absolute top-6 right-6 z-[10003] p-4 bg-black/50 hover:bg-[#C91D73] text-white rounded-full transition-all duration-300 border border-white/10 hover:border-transparent group"
+                className="absolute top-6 right-6 z-[10003] p-4 bg-black/50 hover:bg-magenta text-white rounded-full transition-all duration-300 border border-white/10 hover:border-transparent group"
               >
                 <X size={24} className="group-hover:rotate-90 transition-transform" />
               </button>
@@ -294,8 +375,8 @@ export default function Services() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-transparent opacity-60"></div>
                 <div className="absolute bottom-8 left-8 flex flex-col gap-2">
-                  <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#80E3FF]">The Experience</span>
-                  <h4 className="text-3xl font-black uppercase italic tracking-tighter text-white">{selectedService.id.replace('-', ' ')}</h4>
+                  <span className="text-[10px] font-black uppercase tracking-[0.5em] text-cyan">The Experience</span>
+                  <h4 className="font-lora text-3xl font-black uppercase italic tracking-tighter text-white">{selectedService.id.replace('-', ' ')}</h4>
                 </div>
               </div>
 
@@ -307,7 +388,7 @@ export default function Services() {
               >
                 <div className="mb-12">
                   <div className="h-1 w-20 mb-8" style={{ backgroundColor: selectedService.color }}></div>
-                  <h3 className="text-4xl md:text-6xl font-black uppercase italic leading-[0.9] tracking-tighter mb-8">
+                  <h3 className="font-lora text-4xl md:text-6xl font-black uppercase italic leading-[0.9] tracking-tighter mb-8">
                     {selectedService.title}
                   </h3>
                   <p className="text-xl md:text-2xl font-bold text-white leading-tight italic">
@@ -324,7 +405,7 @@ export default function Services() {
 
                   {selectedService.perfectFor && (
                     <div className="pt-10 border-t border-white/5">
-                      <p className="text-[10px] font-black uppercase tracking-[0.4em] text-[#80E3FF] mb-8">Perfect for:</p>
+                      <p className="text-[10px] font-black uppercase tracking-[0.4em] text-cyan mb-8">Perfect for:</p>
                       <ul className="grid grid-cols-1 gap-4">
                         {selectedService.perfectFor.map((item, i) => (
                           <li key={i} className="text-sm text-white/50 flex items-start gap-4 group/item hover:text-white transition-colors">
@@ -338,7 +419,7 @@ export default function Services() {
 
                   {selectedService.curateList && (
                     <div className="pt-10 border-t border-white/5">
-                      <p className="text-[10px] font-black uppercase tracking-[0.4em] text-[#80E3FF] mb-8">We curate & coordinate:</p>
+                      <p className="text-[10px] font-black uppercase tracking-[0.4em] text-cyan mb-8">We curate & coordinate:</p>
                       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
                         {selectedService.curateList.map((item, i) => (
                           <li key={i} className="text-sm text-white/50 flex items-start gap-3">
@@ -352,7 +433,7 @@ export default function Services() {
 
                   {selectedService.examples && (
                     <div className="pt-10 border-t border-white/5">
-                      <p className="text-[10px] font-black uppercase tracking-[0.4em] text-[#80E3FF] mb-8">Concept Examples:</p>
+                      <p className="text-[10px] font-black uppercase tracking-[0.4em] text-cyan mb-8">Concept Examples:</p>
                       <ul className="space-y-4">
                         {selectedService.examples.map((item, i) => (
                           <li key={i} className="text-base text-white/70 flex items-start gap-4 italic font-medium">
@@ -367,7 +448,7 @@ export default function Services() {
 
                 <div className="mt-24 pt-12 border-t border-white/5 flex items-center justify-between">
                   <p className="text-[10px] font-black uppercase tracking-[0.5em] text-white/20">City Soul Experience</p>
-                  <div className="h-1.5 w-1.5 rounded-full bg-[#C91D73]"></div>
+                  <div className="h-1.5 w-1.5 rounded-full bg-magenta"></div>
                 </div>
               </div>
             </div>
@@ -378,9 +459,9 @@ export default function Services() {
          {/* Closing Section */}
         <div className="mt-10 py-20 border-t border-white/10 text-center relative">
          
-          <h4 className="text-4xl md:text-7xl font-black uppercase italic tracking-tighter leading-[0.9] mb-12">
+          <h4 className="font-lora text-4xl md:text-7xl font-black uppercase italic tracking-tighter leading-[0.9] mb-12">
             Great music doesn’t just fill a space<br/>
-            <span className="text-transparent" style={{ WebkitTextStroke: '1px #C91D73' }}>it transforms how people experience it.</span>
+            <span className="text-transparent" style={{ WebkitTextStroke: '1px #C81D73' }}>it transforms how people experience it.</span>
           </h4>
 
         </div>
@@ -402,7 +483,7 @@ export default function Services() {
           border-radius: 10px;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: #C91D73;
+          background: #C81D73;
         }
       `}} />
     </section>

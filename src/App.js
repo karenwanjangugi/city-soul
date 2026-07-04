@@ -11,6 +11,9 @@ import Testimonials from './Sections/Testimonials';
 import PillNav from './Sections/Hero/PillNav';
 import Hero from './Sections/Hero/Hero';
 import Moments from './Sections/Moments';
+import WhyChooseUs from './Sections/WhyChooseUs';
+import Roster from './Sections/Roster';
+import Advisory from './Sections/Advisory';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,8 +23,9 @@ export default function App() {
   const navItems = [
     { label: 'Home', href: '#home' },
     { label: 'About', href: '#vision' },
-    { label: 'Experiences', href: '#moments' },
     { label: 'Services', href: '#services' },
+    { label: 'Past Events', href: '#moments' },
+    { label: 'Roster', href: '#roster' },
     { label: 'Testimonials', href: '#testimonials' },
     { label: 'The Soul', href: '#about' },
     { label: 'Contact', href: '#contact' },
@@ -60,7 +64,7 @@ export default function App() {
       threshold: 0
     });
 
-    const sections = ['home', 'vision', 'moments', 'services', 'testimonials', 'about', 'contact'];
+    const sections = ['home', 'vision', 'services', 'moments', 'whychooseus', 'roster', 'testimonials', 'about', 'advisory', 'contact'];
     sections.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
@@ -83,10 +87,13 @@ export default function App() {
       />
       <Hero />
       <Vision />
-      <Moments />
       <Services />
+      <Moments />
+      <WhyChooseUs />
+      <Roster />
       <Testimonials />
       <About />
+      <Advisory />
       <Contact />
     </div>
   );

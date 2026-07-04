@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { goToContact } from '../../utils/contactIntent';
 
 const backgroundAssets = [
   { 
@@ -39,7 +40,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="home" className="relative h-screen w-full overflow-hidden bg-black font-['Montserrat']">
+    <section id="home" className="relative h-screen w-full overflow-hidden bg-black font-poppins">
       {/* Cinematic Background Slider */}
       <div className="absolute inset-0 z-0">
         {backgroundAssets.map((asset, index) => (
@@ -79,15 +80,18 @@ export default function Hero() {
         <div className="max-w-4xl text-center">
 
           <div className="space-y-6 md:space-y-8 text-white/95 max-w-3xl mx-auto leading-relaxed">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white italic tracking-tight mb-4 md:mb-6 leading-[1.05]">
+            <h1 className="font-lora text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white italic tracking-tight mb-2 leading-[1.05]">
               Music. Culture.<br/>
               Unforgettable Moments.
             </h1>
-            <p className="text-base md:text-xl lg:text-2xl font-medium text-gray-100 max-w-2xl mx-auto leading-relaxed">
-              We curate live music, DJ experiences and immersive entertainment that transform events into powerful shared memories.
+            <p className="font-lora text-lg md:text-2xl italic text-cyan tracking-tight mb-2">
+              The soundtrack is never accidental.
             </p>
-            
-            <div className="flex flex-wrap justify-center gap-x-6 md:gap-x-8 gap-y-3 text-[10px] md:text-xs font-black text-[#C91D73] uppercase tracking-[0.2em] pt-2">
+            <p className="text-base md:text-xl lg:text-2xl font-medium text-gray-100 max-w-2xl mx-auto leading-relaxed">
+              We curate and produce soulful, intentional experiences that transform how people feel through music — for brands, venues and culture.
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-x-6 md:gap-x-8 gap-y-3 text-[10px] md:text-xs font-black text-magenta uppercase tracking-[0.2em] pt-2">
               <span className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 bg-white rounded-full shadow-[0_0_8px_white]"></span>
                 For Brands
@@ -98,23 +102,28 @@ export default function Hero() {
               </span>
               <span className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 bg-white rounded-full shadow-[0_0_8px_white]"></span>
+                For Artists
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 bg-white rounded-full shadow-[0_0_8px_white]"></span>
                 For the Culture
               </span>
             </div>
           </div>
-          
+
           <div className="mt-10 md:mt-14 flex flex-col sm:flex-row justify-center gap-4">
-            <a 
-              href="#contact" 
-              className="px-8 md:px-12 py-4 md:py-5 bg-[#C91D73] text-white font-black uppercase tracking-widest text-[10px] md:text-xs hover:bg-white hover:text-black transition-all duration-300 text-center shadow-2xl"
+            <a
+              href="#contact"
+              onClick={(e) => { e.preventDefault(); goToContact('event'); }}
+              className="px-8 md:px-12 py-4 md:py-5 bg-magenta text-white font-black uppercase tracking-widest text-[10px] md:text-xs hover:bg-white hover:text-black transition-all duration-300 text-center shadow-2xl"
             >
-              Curate My Event
+              Work with us
             </a>
-            <a 
-              href="#moments" 
+            <a
+              href="#moments"
               className="px-8 md:px-12 py-4 md:py-5 border-2 border-white text-white font-black uppercase tracking-widest text-[10px] md:text-xs hover:bg-white hover:text-black transition-all duration-300 text-center"
             >
-              Explore Experiences
+              Explore our work
             </a>
           </div>
         </div>
