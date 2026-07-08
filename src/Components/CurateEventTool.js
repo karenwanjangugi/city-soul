@@ -121,7 +121,7 @@ export default function CurateEventTool() {
       Notes: ${formData.notes}
     `;
 
-    window.location.href = `mailto:citysoulnrb@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:Events@citysoulexperience.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
     setIsSubmitted(true);
   };
@@ -134,7 +134,7 @@ export default function CurateEventTool() {
         </div>
         <h3 className="font-lora text-3xl font-black text-white mb-4 italic uppercase tracking-tighter">Inquiry Sent</h3>
         <p className="text-gray-400 max-w-sm mx-auto mb-8 font-medium">
-          Thank you for starting your curation journey. Your email client should have opened to send the details to citysoulnrb@gmail.com.
+          Thank you for starting your curation journey. Your email client should have opened to send the details to Events@citysoulexperience.com.
         </p>
         <button
           onClick={() => { setIsSubmitted(false); setCurrentStep(0); setFormData(emptyFormData); }}

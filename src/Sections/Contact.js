@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import CurateEventTool from '../Components/CurateEventTool';
 import ShortEnquiryForm from '../Components/ShortEnquiryForm';
-import { CONTACT_INTENT_EVENT } from '../utils/contactIntent';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -20,6 +20,7 @@ export default function Contact() {
   const contentRef = useRef(null);
   const toolRef = useRef(null);
 
+  const location = useLocation();
   const [activeIntent, setActiveIntent] = useState('event');
   const [rosterAct, setRosterAct] = useState(null);
 
@@ -29,14 +30,11 @@ export default function Contact() {
   };
 
   useEffect(() => {
-    const handleIntent = (e) => {
-      const { intent, extra } = e.detail || {};
-      if (intent) setActiveIntent(intent);
-      if (intent === 'roster' && extra) setRosterAct(extra);
-    };
-    window.addEventListener(CONTACT_INTENT_EVENT, handleIntent);
-    return () => window.removeEventListener(CONTACT_INTENT_EVENT, handleIntent);
-  }, []);
+    const { intent, extra } = location.state || {};
+    if (intent) setActiveIntent(intent);
+    if (intent === 'roster' && extra) setRosterAct(extra);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.key]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -142,10 +140,20 @@ export default function Contact() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-12">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-10">
                 <div className="flex flex-col group">
-                  <span className="text-[10px] uppercase tracking-[0.4em] text-magenta font-black mb-3">Email Connection</span>
-                  <a href="mailto:citysoulnrb@gmail.com" className="text-xl md:text-2xl font-black hover:text-cyan transition-all duration-300 tracking-tighter break-words">citysoulnrb@gmail.com</a>
+                  <span className="text-[10px] uppercase tracking-[0.4em] text-magenta font-black mb-3">Bookings</span>
+                  <a href="mailto:bookings@citysoulexperience.com" className="text-lg md:text-xl font-black hover:text-cyan transition-all duration-300 tracking-tighter break-words">bookings@citysoulexperience.com</a>
+                </div>
+
+                <div className="flex flex-col group">
+                  <span className="text-[10px] uppercase tracking-[0.4em] text-cyan font-black mb-3">Events &amp; Advisory</span>
+                  <a href="mailto:Events@citysoulexperience.com" className="text-lg md:text-xl font-black hover:text-magenta transition-all duration-300 tracking-tighter break-words">Events@citysoulexperience.com</a>
+                </div>
+
+                <div className="flex flex-col group">
+                  <span className="text-[10px] uppercase tracking-[0.4em] text-magenta font-black mb-3">General &amp; Vibes</span>
+                  <a href="mailto:vibes@citysoulexperience.com" className="text-lg md:text-xl font-black hover:text-cyan transition-all duration-300 tracking-tighter break-words">vibes@citysoulexperience.com</a>
                 </div>
 
                 <div className="flex flex-col group">
@@ -186,12 +194,6 @@ export default function Contact() {
             </div>
           </div>
         </div>
-      </div>
-      
-      {/* Footer Branding */}
-      <div className="absolute bottom-8 left-6 right-6 flex items-center justify-between opacity-40">
-        <span className="text-[10px] font-black tracking-[0.5em] uppercase">City Soul © 2026</span>
-        <span className="text-[10px] font-black tracking-[0.5em] uppercase text-magenta">Nairobi • Kenya</span>
       </div>
     </section>
   );

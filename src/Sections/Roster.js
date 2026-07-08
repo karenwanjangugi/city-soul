@@ -1,6 +1,25 @@
 import React, { useState } from 'react';
-import { Mic2, Disc3, Users } from 'lucide-react';
+import { Mic2, Disc3, Users, TrendingUp, CalendarCheck, Music4 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { goToContact } from '../utils/contactIntent';
+
+const offerings = [
+  {
+    title: 'Artist Management & Development',
+    description: 'Long-term management for the artists, DJs and bands we represent — building their sound, brand and career trajectory.',
+    icon: TrendingUp,
+  },
+  {
+    title: 'Bookings',
+    description: 'Artists, DJs and bands booked for your event, venue or brand — matched to the mood, audience and scale of what you’re building.',
+    icon: CalendarCheck,
+  },
+  {
+    title: 'Music Production',
+    description: 'Executive production support for artists and tracks, from concept through to release.',
+    icon: Music4,
+  },
+];
 
 // Placeholder roster — swap these entries for real acts (name, genre, photo) when
 // available. Kept as a plain array so this is a one-file update later.
@@ -25,17 +44,54 @@ const acts = [
   },
 ];
 
+const bookingFor = [
+  'Corporates seeking refined entertainment for events and activations',
+  'Hotels, restaurants, lounges and lifestyle venues booking for a night or a residency',
+  'Brands and organisations planning activations or launches',
+  'Private clients celebrating something worth remembering',
+];
+
+const joiningFor = [
+  'Artists, DJs and bands looking for management and development',
+  'Acts who want bookings handled — riders, logistics, negotiation',
+  'Musicians ready to grow beyond one-off gigs into a real career',
+];
+
+const howItWorks = [
+  {
+    step: '01',
+    title: 'Share the brief',
+    description: 'Tell us the event, the vibe and the date.',
+  },
+  {
+    step: '02',
+    title: 'We match the act',
+    description: 'From our roster, based on genre, energy and audience.',
+  },
+  {
+    step: '03',
+    title: 'We handle logistics',
+    description: 'Scheduling, riders and on-site coordination, sorted.',
+  },
+  {
+    step: '04',
+    title: 'Show time',
+    description: 'Your stage, soundtracked right.',
+  },
+];
+
 const filters = ['All', 'Live Artist', 'DJ', 'Band'];
 
 export default function Roster() {
   const [activeFilter, setActiveFilter] = useState('All');
+  const navigate = useNavigate();
 
   const visibleActs = activeFilter === 'All'
     ? acts
     : acts.filter((act) => act.type === activeFilter);
 
   const handleBook = (act) => {
-    goToContact('roster', { name: act.name, type: act.type });
+    goToContact(navigate, 'roster', { name: act.name, type: act.type });
   };
 
   return (
@@ -51,10 +107,87 @@ export default function Roster() {
               Roster
             </h2>
           </div>
-          <p className="text-white/60 max-w-md font-medium leading-relaxed">
-            Artists, DJs and bands we manage, develop and book. Filter by type and
-            enquire directly to bring one to your stage.
-          </p>
+          <div className="max-w-md">
+            <p className="text-white/60 font-medium leading-relaxed">
+              Artists, DJs and bands we manage, develop and book. Filter by type and
+              enquire directly to bring one to your stage.
+            </p>
+            <div className="mt-6">
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-cyan block mb-2">Engagement</span>
+              <p className="text-white/70 text-sm font-medium">
+                Commission on bookings, project fees for management and production —
+                enquire for details.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* What We Offer */}
+        <div className="mb-16 grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {offerings.map((offer) => {
+            const Icon = offer.icon;
+            return (
+              <div key={offer.title} className="bg-white/5 border border-white/10 rounded-2xl p-7">
+                <Icon size={28} className="text-cyan mb-5" />
+                <h3 className="font-lora text-lg font-black italic tracking-tight mb-3 leading-tight">
+                  {offer.title}
+                </h3>
+                <p className="text-sm text-white/60 leading-relaxed">
+                  {offer.description}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Who It's For */}
+        <div className="mb-16 grid grid-cols-1 sm:grid-cols-2 gap-10 pt-16 border-t border-white/10">
+          <div>
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-cyan mb-5 block">If you're booking talent</span>
+            <ul className="space-y-4">
+              {bookingFor.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-white/80">
+                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-magenta flex-shrink-0"></span>
+                  <span className="leading-snug text-sm">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-cyan mb-5 block">If you're an artist</span>
+            <ul className="space-y-4 mb-6">
+              {joiningFor.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-white/80">
+                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-magenta flex-shrink-0"></span>
+                  <span className="leading-snug text-sm">{item}</span>
+                </li>
+              ))}
+            </ul>
+            <button
+              onClick={() => goToContact(navigate, 'roster')}
+              className="px-6 py-3 bg-transparent border border-white/20 hover:bg-magenta hover:border-magenta text-white font-black uppercase tracking-widest text-[10px] rounded-full transition-all duration-300"
+            >
+              Introduce Yourself
+            </button>
+          </div>
+        </div>
+
+        {/* How Booking Works */}
+        <div className="mb-16">
+          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-cyan mb-8 block">How Booking Works</span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {howItWorks.map((item) => (
+              <div key={item.step}>
+                <span className="text-[10px] font-black tracking-widest text-magenta">{item.step}</span>
+                <h3 className="font-lora text-lg font-black italic tracking-tight mt-3 mb-2 leading-tight">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-white/60 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Filters */}

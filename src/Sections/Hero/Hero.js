@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { goToContact } from '../../utils/contactIntent';
 
 const backgroundAssets = [
@@ -31,6 +32,7 @@ const backgroundAssets = [
 
 export default function Hero() {
   const [currentAssetIndex, setCurrentAssetIndex] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -92,39 +94,38 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-wrap justify-center gap-x-6 md:gap-x-8 gap-y-3 text-[10px] md:text-xs font-black text-magenta uppercase tracking-[0.2em] pt-2">
-              <span className="flex items-center gap-2">
+              <Link to="/services" className="flex items-center gap-2 hover:text-white transition-colors">
                 <span className="w-1.5 h-1.5 bg-white rounded-full shadow-[0_0_8px_white]"></span>
                 For Brands
-              </span>
-              <span className="flex items-center gap-2">
+              </Link>
+              <Link to="/advisory" className="flex items-center gap-2 hover:text-white transition-colors">
                 <span className="w-1.5 h-1.5 bg-white rounded-full shadow-[0_0_8px_white]"></span>
                 For Venues
-              </span>
-              <span className="flex items-center gap-2">
+              </Link>
+              <Link to="/roster" className="flex items-center gap-2 hover:text-white transition-colors">
                 <span className="w-1.5 h-1.5 bg-white rounded-full shadow-[0_0_8px_white]"></span>
                 For Artists
-              </span>
-              <span className="flex items-center gap-2">
+              </Link>
+              <Link to="/moments" className="flex items-center gap-2 hover:text-white transition-colors">
                 <span className="w-1.5 h-1.5 bg-white rounded-full shadow-[0_0_8px_white]"></span>
                 For the Culture
-              </span>
+              </Link>
             </div>
           </div>
 
           <div className="mt-10 md:mt-14 flex flex-col sm:flex-row justify-center gap-4">
-            <a
-              href="#contact"
-              onClick={(e) => { e.preventDefault(); goToContact('event'); }}
+            <button
+              onClick={() => goToContact(navigate, 'event')}
               className="px-8 md:px-12 py-4 md:py-5 bg-magenta text-white font-black uppercase tracking-widest text-[10px] md:text-xs hover:bg-white hover:text-black transition-all duration-300 text-center shadow-2xl"
             >
               Work with us
-            </a>
-            <a
-              href="#moments"
+            </button>
+            <Link
+              to="/moments"
               className="px-8 md:px-12 py-4 md:py-5 border-2 border-white text-white font-black uppercase tracking-widest text-[10px] md:text-xs hover:bg-white hover:text-black transition-all duration-300 text-center"
             >
               Explore our work
-            </a>
+            </Link>
           </div>
         </div>
       </div>

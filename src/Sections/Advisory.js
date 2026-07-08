@@ -1,22 +1,71 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { goToContact } from '../utils/contactIntent';
 
 const coverage = [
-  'Entertainment strategy',
-  'Venue programming direction',
-  'Event consultancy',
-  'Market-entry advisory',
+  {
+    title: 'Entertainment strategy',
+    description: 'Defining how entertainment fits your brand or venue, and building the plan to deliver it.',
+  },
+  {
+    title: 'Venue programming direction',
+    description: 'Curating the music and entertainment calendar that gives your space a consistent identity.',
+  },
+  {
+    title: 'Event consultancy',
+    description: 'Expert input on entertainment choices for a specific event, from concept to lineup.',
+  },
+  {
+    title: 'Market-entry advisory',
+    description: 'Guidance for labels, acts and brands entering the East African entertainment market.',
+  },
 ];
 
 const whoFor = [
-  'Hotels, restaurants and lifestyle venues shaping a musical identity',
-  'Brands entering entertainment or experiential marketing for the first time',
-  'International labels and acts entering the East African market',
-  'Organisations building an internal entertainment or events strategy',
+  {
+    title: 'Hotels, restaurants and lifestyle venues',
+    description: 'Shaping a musical identity through residencies and programming.',
+  },
+  {
+    title: 'Brands new to entertainment',
+    description: 'Entering experiential marketing for the first time and want it done right.',
+  },
+  {
+    title: 'International labels and acts',
+    description: 'Entering the East African market and needing local scene fluency.',
+  },
+  {
+    title: 'Organisations building strategy',
+    description: 'Developing an internal entertainment or events strategy from the ground up.',
+  },
+];
+
+const howItWorks = [
+  {
+    step: '01',
+    title: 'Discovery conversation',
+    description: 'We learn your goals, your space and your audience.',
+  },
+  {
+    step: '02',
+    title: 'Proposal & scope',
+    description: 'A clear plan, deliverables and engagement model.',
+  },
+  {
+    step: '03',
+    title: 'Engagement',
+    description: 'Day rate or retainer — hands-on, not just a slide deck.',
+  },
+  {
+    step: '04',
+    title: 'Ongoing support',
+    description: 'Strategy that evolves as your entertainment programme grows.',
+  },
 ];
 
 export default function Advisory() {
+  const navigate = useNavigate();
   return (
     <section id="advisory" className="py-24 md:py-32 bg-indigo text-white font-poppins relative overflow-hidden border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -38,7 +87,7 @@ export default function Advisory() {
               <p className="text-white font-bold">Day rate or retainer — enquire for details.</p>
             </div>
             <button
-              onClick={() => goToContact('advisory')}
+              onClick={() => goToContact(navigate, 'advisory')}
               className="mt-10 inline-flex items-center gap-3 px-8 py-4 bg-magenta text-white font-black uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all duration-300"
             >
               Enquire about Advisory
@@ -49,26 +98,50 @@ export default function Advisory() {
           <div className="lg:w-3/5 grid grid-cols-1 sm:grid-cols-2 gap-10">
             <div>
               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-cyan mb-5 block">What it covers</span>
-              <ul className="space-y-4">
+              <ul className="space-y-5">
                 {coverage.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-white/80">
+                  <li key={item.title} className="flex items-start gap-3">
                     <span className="mt-2 w-1.5 h-1.5 rounded-full bg-magenta flex-shrink-0"></span>
-                    <span className="leading-snug">{item}</span>
+                    <span>
+                      <span className="block text-white font-bold leading-snug">{item.title}</span>
+                      <span className="block text-sm text-white/60 leading-snug mt-1">{item.description}</span>
+                    </span>
                   </li>
                 ))}
               </ul>
             </div>
             <div>
               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-cyan mb-5 block">Who it's for</span>
-              <ul className="space-y-4">
+              <ul className="space-y-5">
                 {whoFor.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-white/80">
+                  <li key={item.title} className="flex items-start gap-3">
                     <span className="mt-2 w-1.5 h-1.5 rounded-full bg-magenta flex-shrink-0"></span>
-                    <span className="leading-snug text-sm">{item}</span>
+                    <span>
+                      <span className="block text-white font-bold leading-snug text-sm">{item.title}</span>
+                      <span className="block text-sm text-white/60 leading-snug mt-1">{item.description}</span>
+                    </span>
                   </li>
                 ))}
               </ul>
             </div>
+          </div>
+        </div>
+
+        {/* How It Works */}
+        <div className="mt-20 pt-16 border-t border-white/10">
+          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-cyan mb-8 block">How It Works</span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {howItWorks.map((item) => (
+              <div key={item.step}>
+                <span className="text-[10px] font-black tracking-widest text-magenta">{item.step}</span>
+                <h3 className="font-lora text-lg font-black italic tracking-tight mt-3 mb-2 leading-tight">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-white/70 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

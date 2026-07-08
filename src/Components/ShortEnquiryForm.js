@@ -5,6 +5,7 @@ const variantConfig = {
   roster: {
     subjectPrefix: 'Talent Booking Enquiry',
     submitLabel: 'Send Booking Enquiry',
+    email: 'bookings@citysoulexperience.com',
     fields: [
       { id: 'act', label: 'Act', type: 'text', required: true },
       { id: 'name', label: 'Full Name', type: 'text', required: true },
@@ -18,6 +19,7 @@ const variantConfig = {
   advisory: {
     subjectPrefix: 'Advisory Enquiry',
     submitLabel: 'Send Advisory Enquiry',
+    email: 'Events@citysoulexperience.com',
     fields: [
       { id: 'organisation', label: 'Organisation', type: 'text', required: true },
       { id: 'name', label: 'Full Name', type: 'text', required: true },
@@ -35,6 +37,7 @@ const variantConfig = {
   general: {
     subjectPrefix: 'General Enquiry',
     submitLabel: 'Send Enquiry',
+    email: 'vibes@citysoulexperience.com',
     fields: [
       { id: 'name', label: 'Full Name', type: 'text', required: true },
       { id: 'email', label: 'Email Address', type: 'email', required: true },
@@ -71,7 +74,7 @@ export default function ShortEnquiryForm({ variant, initialAct }) {
       .map((field) => `${field.label}: ${formData[field.id] || '-'}`)
       .join('\n');
 
-    window.location.href = `mailto:citysoulnrb@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:${config.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setIsSubmitted(true);
   };
 
@@ -83,7 +86,7 @@ export default function ShortEnquiryForm({ variant, initialAct }) {
         </div>
         <h3 className="font-lora text-3xl font-black text-white mb-4 italic uppercase tracking-tighter">Inquiry Sent</h3>
         <p className="text-gray-400 max-w-sm mx-auto mb-8 font-medium">
-          Thank you. Your email client should have opened to send the details to citysoulnrb@gmail.com.
+          Thank you. Your email client should have opened to send the details to {config.email}.
         </p>
         <button
           onClick={() => { setIsSubmitted(false); setFormData(buildInitialData()); }}

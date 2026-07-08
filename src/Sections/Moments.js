@@ -93,7 +93,7 @@ export default function Moments() {
       <div className="max-w-7xl mx-auto px-6 pt-16 md:pt-24">
         <div className="mb-16">
           <div className="flex items-center gap-4 mb-6">
-            <h2 className="font-lora text-4xl md:text-6xl text-magenta font-black tracking-tighter leading-none uppercase italic">Past Events We've Curated</h2>
+            <h2 className="font-lora text-4xl md:text-6xl text-magenta font-black tracking-tighter leading-none uppercase italic">Experiences We've Curated</h2>
             <div className="h-px flex-1 bg-gradient-to-r from-magenta to-transparent opacity-30"></div>
           </div>
           <p className="text-lg text-gray-400 max-w-2xl font-medium border-l-2 border-cyan pl-6">
