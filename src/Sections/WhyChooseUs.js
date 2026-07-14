@@ -3,7 +3,7 @@ import React from 'react';
 const reasons = [
   {
     title: 'We curate, not just supply',
-    description: 'End-to-end experience design — we shape how the moment feels, not only who plays.',
+    description: 'End-to-end experience design, we shape how the moment feels, not only who plays.',
   },
   {
     title: 'One partner, every need',

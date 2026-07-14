@@ -50,15 +50,10 @@ const howItWorks = [
   {
     step: '02',
     title: 'Proposal & scope',
-    description: 'A clear plan, deliverables and engagement model.',
+    description: 'A clear plan, deliverables and next steps.',
   },
   {
     step: '03',
-    title: 'Engagement',
-    description: 'Day rate or retainer — hands-on, not just a slide deck.',
-  },
-  {
-    step: '04',
     title: 'Ongoing support',
     description: 'Strategy that evolves as your entertainment programme grows.',
   },
@@ -67,7 +62,7 @@ const howItWorks = [
 export default function Advisory() {
   const navigate = useNavigate();
   return (
-    <section id="advisory" className="py-24 md:py-32 bg-indigo text-white font-poppins relative overflow-hidden border-t border-white/5">
+    <section id="advisory" className="pt-32 md:pt-40 pb-24 md:pb-32 bg-indigo text-white font-poppins relative overflow-hidden border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
           <div className="lg:w-2/5">
@@ -76,16 +71,12 @@ export default function Advisory() {
               <span className="text-xs font-black uppercase tracking-[0.4em] text-cyan">Advisory</span>
             </div>
             <h2 className="font-lora text-5xl md:text-6xl font-black tracking-tighter leading-[0.9] uppercase italic mb-6">
-              Entertainment Advisory
+              Creative Advisory
             </h2>
             <p className="text-white/70 text-lg leading-relaxed max-w-md">
               We advise brands, venues and organisations on how to do entertainment
-              well — from strategy through to execution.
+              well, from strategy through to execution.
             </p>
-            <div className="mt-10">
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-cyan block mb-2">Engagement</span>
-              <p className="text-white font-bold">Day rate or retainer — enquire for details.</p>
-            </div>
             <button
               onClick={() => goToContact(navigate, 'advisory')}
               className="mt-10 inline-flex items-center gap-3 px-8 py-4 bg-magenta text-white font-black uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all duration-300"
@@ -130,7 +121,7 @@ export default function Advisory() {
         {/* How It Works */}
         <div className="mt-20 pt-16 border-t border-white/10">
           <span className="text-[10px] font-black uppercase tracking-[0.3em] text-cyan mb-8 block">How It Works</span>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {howItWorks.map((item) => (
               <div key={item.step}>
                 <span className="text-[10px] font-black tracking-widest text-magenta">{item.step}</span>

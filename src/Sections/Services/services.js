@@ -79,7 +79,7 @@ const servicesList = [
     title: "Experiential Entertainment Concepts",
     shortDescription: "Immersive entertainment experiences that blend music, storytelling, and art.",
     detailedDescription: "City Soul designs immersive entertainment experiences that blend music, storytelling, art and audience interaction.",
-    fullContent: "Some moments call for something beyond traditional performances. These experiences move beyond simply watching a performance and invite audiences to step into the atmosphere of the music itself. Our goal is to design experiences that feel unique, immersive and memorable—the kind people talk about long after the event ends.",
+    fullContent: "Some moments call for something beyond traditional performances. These experiences move beyond simply watching a performance and invite audiences to step into the atmosphere of the music itself. Our goal is to design experiences that feel unique, immersive and memorable, the kind people talk about long after the event ends.",
     examples: [
       "Experiential concerts that combine performance and audience interaction",
       "Themed music experiences inspired by culture, storytelling or artistic concepts",
@@ -191,7 +191,7 @@ export default function Services() {
     <section
       id="services"
       ref={sectionRef}
-      className={`py-32 bg-[#0a051d] text-white font-poppins relative border-t border-white/5 transition-all duration-300 ${selectedIndex !== null ? 'z-[10000]' : 'z-10'}`}
+      className={`pt-40 pb-32 bg-[#0a051d] text-white font-poppins relative border-t border-white/5 transition-all duration-300 ${selectedIndex !== null ? 'z-[10000]' : 'z-10'}`}
     >
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -217,7 +217,7 @@ export default function Services() {
           <PillarsGrid />
         </div>
 
-        {/* Experiences Pillar — Detail */}
+        {/* Experiences Pillar: Detail */}
         <div id="experiences-detail" className="mb-16 scroll-mt-32">
           <span className="text-[10px] font-black uppercase tracking-[0.4em] text-cyan mb-3 block">Experiences, in detail</span>
           <h3 className="font-lora text-3xl md:text-5xl font-black uppercase italic tracking-tighter">

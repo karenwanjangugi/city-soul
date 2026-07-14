@@ -78,14 +78,14 @@ export default function About() {
                 Hunja Wangui is a Nairobi-based experiential entertainment creative with
                 five years building City Soul Experience from the ground up.
               </p>
-              {/* TODO: placeholder "why" sentence — confirm exact wording with Hunja before publishing */}
+              {/* TODO: placeholder "why" sentence, confirm exact wording with Hunja before publishing */}
               <p>
                 What drives the work is simple: the belief that a well-chosen soundtrack
                 can turn a room of strangers into a shared memory.
               </p>
               <p>
                 Their work spans event curation, artist development, live production and
-                advisory — always in pursuit of the feeling a room can hold when the
+                advisory, always in pursuit of the feeling a room can hold when the
                 music is right.
               </p>
               <div className="pt-4 flex items-center gap-2">

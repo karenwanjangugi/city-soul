@@ -13,7 +13,7 @@ const pillars = [
     key: 'talent',
     title: 'Talent',
     description: 'Artist management & development · bookings (artists, DJs, bands) · music production (Executive Producer)',
-    href: '/roster',
+    href: '/talent',
     status: 'active',
   },
   {

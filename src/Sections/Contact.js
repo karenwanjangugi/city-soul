@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const intentTabs = [
   { id: 'event', label: 'Curate an Event' },
-  { id: 'roster', label: 'Book Talent' },
+  { id: 'talent', label: 'Book Talent' },
   { id: 'advisory', label: 'Advisory Enquiry' },
   { id: 'general', label: 'General Enquiry' },
 ];
@@ -22,7 +22,7 @@ export default function Contact() {
 
   const location = useLocation();
   const [activeIntent, setActiveIntent] = useState('event');
-  const [rosterAct, setRosterAct] = useState(null);
+  const [talentAct, setTalentAct] = useState(null);
 
   const socialLinks = {
     INSTAGRAM: "https://www.instagram.com/hunja_wangui/",
@@ -32,7 +32,7 @@ export default function Contact() {
   useEffect(() => {
     const { intent, extra } = location.state || {};
     if (intent) setActiveIntent(intent);
-    if (intent === 'roster' && extra) setRosterAct(extra);
+    if (intent === 'talent' && extra) setTalentAct(extra);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.key]);
 
@@ -84,7 +84,7 @@ export default function Contact() {
     <section id="contact" ref={sectionRef} className="bg-black text-white font-poppins relative overflow-hidden min-h-screen border-t border-white/5 pb-24" >
 
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full pt-20">
+      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full pt-32 md:pt-40">
         {/* Section Header */}
         <div ref={headerRef} className="text-center mb-20">
           <h2 className="font-lora text-7xl md:text-[10rem] font-black tracking-tighter leading-none text-white uppercase italic mb-8 opacity-100">
@@ -122,7 +122,7 @@ export default function Contact() {
               <ShortEnquiryForm
                 key={activeIntent}
                 variant={activeIntent}
-                initialAct={activeIntent === 'roster' ? rosterAct : undefined}
+                initialAct={activeIntent === 'talent' ? talentAct : undefined}
               />
             )}
           </div>
@@ -135,8 +135,8 @@ export default function Contact() {
                   Ready to bring your vision to life?
                 </h3>
                 <p className="text-lg text-gray-400 font-medium leading-relaxed">
-                  Tell us what you're after — curating an event, booking talent, advisory,
-                  or just starting a conversation — and we'll take it from there.
+                  Tell us what you're after: curating an event, booking talent, advisory,
+                  or just starting a conversation, and we'll take it from there.
                 </p>
               </div>
 

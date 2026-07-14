@@ -90,7 +90,7 @@ export default function Hero() {
               The soundtrack is never accidental.
             </p>
             <p className="text-base md:text-xl lg:text-2xl font-medium text-gray-100 max-w-2xl mx-auto leading-relaxed">
-              We curate and produce soulful, intentional experiences that transform how people feel through music — for brands, venues and culture.
+              We curate and produce soulful, intentional experiences that transform how people feel through music, for brands, venues and culture.
             </p>
 
             <div className="flex flex-wrap justify-center gap-x-6 md:gap-x-8 gap-y-3 text-[10px] md:text-xs font-black text-magenta uppercase tracking-[0.2em] pt-2">
@@ -102,7 +102,7 @@ export default function Hero() {
                 <span className="w-1.5 h-1.5 bg-white rounded-full shadow-[0_0_8px_white]"></span>
                 For Venues
               </Link>
-              <Link to="/roster" className="flex items-center gap-2 hover:text-white transition-colors">
+              <Link to="/talent" className="flex items-center gap-2 hover:text-white transition-colors">
                 <span className="w-1.5 h-1.5 bg-white rounded-full shadow-[0_0_8px_white]"></span>
                 For Artists
               </Link>

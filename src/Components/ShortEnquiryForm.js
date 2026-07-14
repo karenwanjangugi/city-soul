@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Send, CheckCircle2 } from 'lucide-react';
 
 const variantConfig = {
-  roster: {
+  talent: {
     subjectPrefix: 'Talent Booking Enquiry',
     submitLabel: 'Send Booking Enquiry',
     email: 'bookings@citysoulexperience.com',
@@ -53,7 +53,7 @@ export default function ShortEnquiryForm({ variant, initialAct }) {
   const buildInitialData = () => {
     const data = {};
     config.fields.forEach((field) => { data[field.id] = ''; });
-    if (variant === 'roster' && initialAct) {
+    if (variant === 'talent' && initialAct) {
       data.act = `${initialAct.name} (${initialAct.type})`;
     }
     return data;

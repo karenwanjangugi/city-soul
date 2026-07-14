@@ -9,7 +9,7 @@ import Home from './Pages/Home';
 import AboutPage from './Pages/About';
 import Services from './Sections/Services/services';
 import Advisory from './Sections/Advisory';
-import Roster from './Sections/Roster';
+import Talent from './Sections/Talent';
 import Moments from './Sections/Moments';
 import Contact from './Sections/Contact';
 
@@ -19,17 +19,16 @@ const navItems = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/services' },
-  { label: 'Roster', href: '/roster' },
+  { label: 'Talent', href: '/talent' },
   { label: 'Experiences', href: '/moments' },
   { label: 'Advisory', href: '/advisory' },
-  { label: 'Contact', href: '/contact' },
 ];
 
 function AppShell() {
   const location = useLocation();
   const lenisRef = useRef(null);
 
-  // Lenis + GSAP ScrollTrigger — set up once for the life of the app.
+  // Lenis + GSAP ScrollTrigger, set up once for the life of the app.
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -72,7 +71,7 @@ function AppShell() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/services" element={<Services />} />
         <Route path="/advisory" element={<Advisory />} />
-        <Route path="/roster" element={<Roster />} />
+        <Route path="/talent" element={<Talent />} />
         <Route path="/moments" element={<Moments />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<Home />} />

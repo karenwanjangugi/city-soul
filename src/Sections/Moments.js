@@ -5,7 +5,7 @@ const moments = [
   {
     src: '/moments/image1.jpg',
     alt: 'Elijah Kitaka Performing',
-    title: 'Elijah Kitaka — Live in NBO',
+    title: 'Elijah Kitaka: Live in NBO',
     venue: 'Replay NBO',
     year: '2025',
     description: "It was an honour to curate and produce Elijah Kitaka's first event in Nairobi, bringing his unique sound to our local stage as a full live production with the Double Black Band."
@@ -16,7 +16,7 @@ const moments = [
     title: 'Social Night Live · Residency',
     venue: 'The Social House Nairobi',
     year: '2023',
-    description: 'Sharing hosting duties at our biweekly residency — nights built around community through music.'
+    description: 'Sharing hosting duties at our biweekly residency, nights built around community through music.'
   },
   {
     src: '/moments/image2.jpg',
@@ -104,7 +104,7 @@ export default function Moments() {
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {moments.map((moment, index) => {
-            // With 5 cards the last row falls short of a full grid — span the
+            // With 5 cards the last row falls short of a full grid, span the
             // trailing cards so the final row fills completely at every breakpoint
             // instead of leaving a gap.
             const isSecondToLast = index === moments.length - 2;
@@ -209,7 +209,7 @@ export default function Moments() {
                 </p>
                 {currentMoment.placeholderImage && (
                   <p className="mt-4 text-xs text-gray-500 italic">
-                    Placeholder photo — swap for real Novotel Westlands event photography.
+                    Placeholder photo, swap for real Novotel Westlands event photography.
                   </p>
                 )}
                 <div className="mt-10 pt-8 border-t border-white/5 flex items-center justify-between">

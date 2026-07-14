@@ -43,7 +43,7 @@ export default function Home() {
             Ready to bring your vision to life?
           </h2>
           <p className="text-lg md:text-xl font-medium text-ink/80 mb-10">
-            Tell us what you're after — curating an event, booking talent, advisory,
+            Tell us what you're after: curating an event, booking talent, advisory,
             or just starting a conversation.
           </p>
           <button

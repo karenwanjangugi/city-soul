@@ -100,7 +100,7 @@ export default function Vision() {
               <div className="relative">
                 <div className="absolute -left-6 top-0 bottom-0 w-1 bg-black/20"></div>
                 <p className="font-lora pl-6 text-ink text-xl md:text-2xl italic font-bold">
-                 City Soul Experience is an experiential entertainment agency based in Nairobi. We believe music is more than entertainment — it is the invisible architecture of an experience.
+                 City Soul Experience is an experiential entertainment agency based in Nairobi. We believe music is more than entertainment; it is the invisible architecture of an experience.
                 </p>
               </div>
               <div className="space-y-6">
@@ -108,7 +108,7 @@ export default function Vision() {
                   The right sound can shift the mood of a room, spark connection between strangers, and turn a gathering into a memory that lingers long after the night ends.
                 </p>
                 <p className="text-base md:text-lg leading-relaxed text-ink/80">
-                  We curate the sound, energy and atmosphere of moments that matter. Through carefully selected artists, DJs and immersive concepts, we design experiences that feel intentional, soulful and alive — for brands, venues, artists and individuals alike.
+                  We curate the sound, energy and atmosphere of moments that matter. Through carefully selected artists, DJs and immersive concepts, we design experiences that feel intentional, soulful and alive, for brands, venues, artists and individuals alike.
                 </p>
                 <p className="text-base md:text-lg leading-relaxed border-t border-black/10 pt-6 text-ink/80">
                   We bring that same instinct to the talent we develop, the spaces we programme, and the stories we tell about the scene.
@@ -123,7 +123,7 @@ export default function Vision() {
           <div>
             <span className="text-xs font-black uppercase tracking-[0.4em] text-ink/70 block mb-4">Vision</span>
             <p className="font-lora text-xl md:text-2xl italic font-semibold text-ink leading-snug">
-              To become the defining name in experiential entertainment across the region — the partner trusted to shape how people feel through music.
+              To become the defining name in experiential entertainment across the region, the partner trusted to shape how people feel through music.
             </p>
           </div>
           <div>

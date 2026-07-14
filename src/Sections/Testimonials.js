@@ -53,7 +53,7 @@ export default function Testimonials() {
             </div>
           </div>
 
-          {/* Placeholder — swap for a real quote/name/org */}
+          {/* Placeholder, swap for a real quote/name/org */}
           <div className="relative group">
             <div className="absolute -left-6 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan to-magenta opacity-50 group-hover:opacity-100 transition-opacity"></div>
             <div className="space-y-8">
@@ -64,7 +64,7 @@ export default function Testimonials() {
                 <cite className="text-base md:text-lg font-black not-italic block uppercase tracking-tight text-cyan">
                   Venue Manager
                 </cite>
-                <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">Placeholder — Nairobi Lifestyle Venue</span>
+                <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">Placeholder, Nairobi Lifestyle Venue</span>
               </div>
             </div>
           </div>
