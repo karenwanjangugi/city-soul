@@ -64,7 +64,7 @@ export default function Testimonials() {
                 <cite className="text-base md:text-lg font-black not-italic block uppercase tracking-tight text-cyan">
                   Venue Manager
                 </cite>
-                <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">Placeholder, Nairobi Lifestyle Venue</span>
+                <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">Nairobi Lifestyle Venue</span>
               </div>
             </div>
           </div>
